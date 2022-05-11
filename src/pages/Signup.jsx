@@ -4,7 +4,6 @@ import { useDocumentTitle, useAuthForm, useToggle } from "../hooks";
 import { signup } from "../services";
 import { useDispatch } from "react-redux";
 import {
-  EMAIL_REGEX,
   EMAIL_ACTION,
   USERNAME_ACTION,
   PASSWORD_ACTION,
@@ -12,6 +11,7 @@ import {
   FULL_NAME_ACTION,
 } from "../Utils/constants";
 import { RiLoaderFill } from "../Utils/icons";
+import { validateSignupFields } from "../Utils/helpers";
 
 function Signup() {
   useDocumentTitle("Signup");
@@ -26,24 +26,18 @@ function Signup() {
 
   const signupHandler = async (e) => {
     e.preventDefault();
-    if (!EMAIL_REGEX.test(email)) {
-      alert("Invalid email address");
-      return;
-    }
 
     if (
-      password.trim().length === 0 ||
-      fullName.trim().length === 0 ||
-      username.trim().length === 0
-    ) {
-      alert("Fields can't be empty");
+      !validateSignupFields(
+        password,
+        fullName,
+        username,
+        confirmPassword,
+        email
+      )
+    )
       return;
-    }
 
-    if (password !== confirmPassword) {
-      alert("Passwords don't match");
-      return;
-    }
     setIsLoading(true);
     const status = await signup(
       { fullName, username, email, password },
