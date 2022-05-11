@@ -7,6 +7,7 @@ const validateSignupFields = (
   confirmPassword,
   email
 ) => {
+  console.log(email);
   if (!EMAIL_REGEX.test(email)) {
     alert("Invalid email address");
     return false;
