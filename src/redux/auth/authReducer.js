@@ -1,22 +1,26 @@
 import { createReducer, createAction } from "@reduxjs/toolkit";
 
-const initialState = { isAuthenticated: false, token: null, user: {} };
+let token = localStorage.getItem("token");
+let isAuthenticated = token ? true : false;
+const initialState = {
+  token,
+  isAuthenticated,
+};
 
 const authenticate = createAction("AUTHENTICATE");
 const logout = createAction("LOGOUT");
-const fetchUser = createAction("FETCH_USER");
 
 const authReducer = createReducer(
   initialState,
   {
     [authenticate]: (state, action) => {
       state.isAuthenticated = true;
-      state.token = action.payload.token;
-      state.user = action.payload.user;
+      state.token = action.payload;
     },
-    [logout]: () => initialState,
-    [fetchUser]: (state) => {
-      state.user = action.payload.user;
+    [logout]: (state) => {
+      localStorage.removeItem("token");
+      state.isAuthenticated = false;
+      state.token = undefined;
     },
   },
   [],
@@ -25,4 +29,4 @@ const authReducer = createReducer(
   }
 );
 
-export { authReducer, authenticate, logout, fetchUser };
+export { authReducer, authenticate, logout };

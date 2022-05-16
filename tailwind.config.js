@@ -3,6 +3,7 @@ module.exports = {
   theme: {
     fontFamily: {
       robotoFlex: "Roboto Flex, sans-serif",
+      openSans: "Open Sans, sans-serif;",
     },
     extend: {},
   },

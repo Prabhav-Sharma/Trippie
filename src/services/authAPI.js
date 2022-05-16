@@ -1,5 +1,5 @@
 import axios from "axios";
-import { authenticate, fetchUser } from "../redux";
+import { authenticate, addUser } from "../redux";
 
 const signup = async (requestBody, dispatcher) => {
   try {
@@ -9,12 +9,9 @@ const signup = async (requestBody, dispatcher) => {
       data: requestBody,
     });
     localStorage.setItem("token", response.data.encodedToken);
-    dispatcher(
-      authenticate({
-        user: response.data.createdUser,
-        token: response.data.encodedToken,
-      })
-    );
+    dispatcher(authenticate(response.data.encodedToken));
+    dispatcher(addUser(response.data.createdUser));
+
     // To be added later: toast.success(`Welcome on board, ${response.data.createdUser.fullName}`);
     return "SUCCESS";
   } catch (e) {
@@ -33,12 +30,8 @@ const login = async (requestBody, dispatcher) => {
       data: requestBody,
     });
     localStorage.setItem("token", response.data.encodedToken);
-    dispatcher(
-      authenticate({
-        user: response.data.foundUser,
-        token: response.data.encodedToken,
-      })
-    );
+    dispatcher(authenticate(response.data.encodedToken));
+    dispatcher(addUser(response.data.foundUser));
     // To be added later:toast.success(`Welcome back ${response.data.foundUser.fullName}`);
     return "SUCCESS";
   } catch (e) {
@@ -48,16 +41,17 @@ const login = async (requestBody, dispatcher) => {
   }
 };
 
-const fetchUserDetails = async (userId, dispatcher) => {
+const fetchAuthUserDetails = async (token, dispatcher) => {
   try {
     const response = await axios({
       method: "GET",
-      url: `/api/users/${userId}`,
+      url: "/api/auth/user",
+      headers: { authorization: token },
     });
-    dispatcher(fetchUser({ user: response.data.user }));
+    dispatcher(addUser(response.data.user));
   } catch (e) {
     console.log(e);
   }
 };
 
-export { login, signup, fetchUserDetails };
+export { login, signup, fetchAuthUserDetails };
