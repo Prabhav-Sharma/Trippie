@@ -4,6 +4,7 @@ import { users } from "./backend/db/users";
 import {
   loginHandler,
   signupHandler,
+  getAuthUserHandler,
 } from "./backend/controllers/AuthController";
 import {
   createPostHandler,
@@ -55,6 +56,7 @@ export function makeServer({ environment = "development" } = {}) {
     routes() {
       this.namespace = "api";
       // auth routes (public)
+      this.get("/auth/user", getAuthUserHandler.bind(this));
       this.post("/auth/signup", signupHandler.bind(this));
       this.post("/auth/login", loginHandler.bind(this));
 

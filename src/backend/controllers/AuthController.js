@@ -1,6 +1,6 @@
 import { v4 as uuid } from "uuid";
 import { Response } from "miragejs";
-import { formatDate } from "../utils/authUtils";
+import { formatDate, requiresAuth } from "../utils/authUtils";
 const sign = require("jwt-encode");
 
 /**
@@ -40,6 +40,8 @@ export const signupHandler = function (schema, request) {
       followers: [],
       following: [],
       bookmarks: [],
+      profileImg:
+        "https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg",
     };
     const createdUser = schema.users.create(newUser);
     const encodedToken = sign(
@@ -103,5 +105,27 @@ export const loginHandler = function (schema, request) {
         error,
       }
     );
+  }
+};
+
+/**
+ * This handler fetches the user details.
+ * send GET Request at /api/auth/user
+ * */
+
+export const getAuthUserHandler = function (schema, request) {
+  const user = requiresAuth.call(this, request);
+  try {
+    if (!user) {
+      return new Response(
+        404,
+        {},
+        { errors: ["The email you entered is not registered. Not found error"] }
+      );
+    }
+    delete user.password;
+    return new Response(201, {}, { user: user });
+  } catch (error) {
+    return new Response(500, {}, { error });
   }
 };

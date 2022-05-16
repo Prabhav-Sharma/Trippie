@@ -242,7 +242,9 @@ export const followUserHandler = function (schema, request) {
     return new Response(
       200,
       {},
-      { user: updatedUser, followUser: updatedFollowUser }
+      // { user: updatedUser, followUser: updatedFollowUser }
+      //Commented as a security against future use cases
+      { following: updatedUser.following, followUser: updatedFollowUser }
     );
   } catch (error) {
     return new Response(
@@ -307,7 +309,9 @@ export const unfollowUserHandler = function (schema, request) {
     return new Response(
       200,
       {},
-      { user: updatedUser, followUser: updatedFollowUser }
+      // { user: updatedUser, followUser: updatedFollowUser }
+      //Commented as a security against future use cases
+      { following: updatedUser.following }
     );
   } catch (error) {
     return new Response(
