@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
+import { LogoutButton } from ".";
 
 function TopBar() {
   return (
-    <nav className="p-1 bg-gray-800 w-full ">
+    <nav className="p-1 bg-gray-800 w-full">
       <Link to="/">
         <img
           className="w-28 ml-8 ease-in duration-200 text-3xl hover:scale-110 hover:cursor-pointer"
@@ -10,6 +11,7 @@ function TopBar() {
           alt="Trippie Logo"
         />
       </Link>
+      <LogoutButton />
     </nav>
   );
 }
