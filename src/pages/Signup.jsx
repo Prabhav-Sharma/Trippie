@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { TextInput } from "../components";
 import { useDocumentTitle, useAuthForm, useToggle } from "../hooks";
 import { signup } from "../services";
@@ -22,6 +22,8 @@ function Signup() {
 
   const dispatch = useDispatch();
 
+  const navigate = useNavigate();
+
   const { toggle: isLoading, setToggle: setIsLoading } = useToggle(false);
 
   const signupHandler = async (e) => {
@@ -44,7 +46,7 @@ function Signup() {
       dispatch
     );
     setIsLoading(false);
-    // status === "SUCCESS" && navigate("/home");
+    status === "SUCCESS" && navigate("/home");
     //Commented for future, when home page is added
   };
   return (

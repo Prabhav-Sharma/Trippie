@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { TextInput } from "../components";
 import { useDocumentTitle, useAuthForm, useToggle } from "../hooks";
 import { login } from "../services";
@@ -15,6 +15,8 @@ function Login() {
 
   const dispatch = useDispatch();
 
+  const navigate = useNavigate();
+
   const { toggle: loginLoading, setToggle: setLoginLoading } = useToggle(false);
   const { toggle: testLoading, setToggle: setTestLoading } = useToggle(false);
 
@@ -28,8 +30,7 @@ function Login() {
     setLoginLoading(true);
     const status = await login({ username, password }, dispatch);
     setLoginLoading(false);
-    // status === "SUCCESS" && navigate("/home");
-    //Commented for future, when home page is added
+    status === "SUCCESS" && navigate("/home");
   };
 
   const loginWithTestCredentials = async (e) => {
@@ -40,8 +41,7 @@ function Login() {
       dispatch
     );
     setTestLoading(false);
-    // status === "SUCCESS" && navigate("/home");
-    //Commented for future, when home page is added
+    status === "SUCCESS" && navigate("/home");
   };
 
   return (
