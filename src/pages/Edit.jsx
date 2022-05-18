@@ -9,6 +9,7 @@ import {
 } from "../services";
 import { BiLoaderAlt } from "../Utils/icons";
 import { useDispatch, useSelector } from "react-redux";
+import { useDocumentTitle } from "../hooks";
 
 function Edit() {
   const [content, setContent] = useState("");
@@ -16,6 +17,8 @@ function Edit() {
   const token = useSelector((state) => state.auth.token);
   const location = useLocation();
   const dispatch = useDispatch();
+
+  useDocumentTitle(`Editing ${commentId ? "comment" : "post"}`, [commentId]);
 
   useEffect(() => {
     (async () => {

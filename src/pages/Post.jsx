@@ -4,6 +4,7 @@ import { fetchPostById, addCommentToPost } from "../services";
 import { NewContent, PostCard, Feed } from "../components";
 import { useDispatch, useSelector } from "react-redux";
 import { BiLoaderAlt } from "../Utils/icons";
+import { useDocumentTitle } from "../hooks";
 
 function Post() {
   const { postId } = useParams();
@@ -12,7 +13,9 @@ function Post() {
   const token = useSelector((state) => state.auth.token);
   const dispatch = useDispatch();
   const location = useLocation();
-  const { comments } = currentPost;
+  const { comments, username } = currentPost;
+
+  useDocumentTitle(`Post by @${username}`, [username]);
 
   useEffect(() => {
     (async () => {
