@@ -13,7 +13,7 @@ import {
   deleteComment,
   getCommentById,
 } from "../services";
-import { likeFormatter } from "../Utils/helpers";
+import { unitFormatter } from "../Utils/helpers";
 import { useToggle } from "../hooks";
 import { useNavigate, useLocation } from "react-router-dom";
 
@@ -64,7 +64,7 @@ function CommentCard({ comment }) {
             onClick={() => likeComment(postId, _id, token, dispatch)}
           />
         )}
-        {likeFormatter(likeCount)}
+        {unitFormatter(likeCount)}
       </span>
       {authUsername === username && (
         <span className="relative self-center">
