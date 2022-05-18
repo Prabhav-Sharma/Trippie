@@ -25,3 +25,24 @@ body {
     min-width: 2.25rem;
     max-width: 2.25rem;
   }
+
+  .min-h-16{
+    min-height: 3rem;
+  }
+
+  .toggle-menu::before{
+    top: 3px;
+    right: -14px;
+    border: 7px solid transparent;
+    border-left-color: #374151;
+  }
+
+  .toggle-menu::before, .toggle-menu::after{
+    position: absolute;
+    display: inline-block;
+    content: ""
+  }
+
+  .-left-21{
+    left:-5.25rem
+  }
