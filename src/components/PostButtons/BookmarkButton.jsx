@@ -1,20 +1,11 @@
-import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  addPostToBookmarks,
-  fetchBookmarks,
-  removePostFromBookmarks,
-} from "../../services";
+import { addPostToBookmarks, removePostFromBookmarks } from "../../services";
 import { BsBookmark, BsFillBookmarkCheckFill } from "../../Utils/icons";
 
 function BookmarkButton({ postId }) {
   const token = useSelector((state) => state.auth.token);
   const bookmarks = useSelector((state) => state.user.bookmarks);
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    fetchBookmarks(token, dispatch);
-  }, []);
 
   return bookmarks.some((post) => post._id === postId) ? (
     <BsFillBookmarkCheckFill
