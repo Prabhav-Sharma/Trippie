@@ -1,8 +1,9 @@
+import { useEffect } from "react";
 import { useDocumentTitle } from "../hooks";
 import { useDispatch, useSelector } from "react-redux";
 import { Feed, NewContent } from "../components";
-import { useEffect } from "react";
 import { fetchPosts, fetchAuthUserDetails, addPost } from "../services";
+
 function Home() {
   useDocumentTitle("Home");
   const posts = useSelector((state) => state.appData.posts);

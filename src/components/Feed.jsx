@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState, useMemo } from "react";
 import { getLatestFeed } from "../Utils/helpers";
-import { PostCard } from ".";
-import CommentCard from "./CommentCard";
+import { PostCard, CommentCard } from ".";
 
 function PostFeed({
   posts,

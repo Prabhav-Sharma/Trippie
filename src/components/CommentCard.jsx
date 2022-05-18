@@ -7,12 +7,7 @@ import {
   FaTrash,
 } from "../Utils/icons";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  likeComment,
-  dislikeComment,
-  deleteComment,
-  getCommentById,
-} from "../services";
+import { likeComment, dislikeComment, deleteComment } from "../services";
 import { unitFormatter } from "../Utils/helpers";
 import { useToggle } from "../hooks";
 import { useNavigate, useLocation } from "react-router-dom";

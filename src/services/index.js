@@ -26,6 +26,8 @@ import {
   getCommentById,
 } from "./commentsAPI";
 
+import { fetchUsers, followUser, unfollowUser } from "./usersAPI";
+
 export {
   login,
   signup,
@@ -48,4 +50,7 @@ export {
   deleteComment,
   likeComment,
   dislikeComment,
+  fetchUsers,
+  followUser,
+  unfollowUser,
 };
