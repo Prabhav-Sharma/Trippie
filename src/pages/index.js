@@ -4,4 +4,5 @@ import Signup from "./Signup";
 import Home from "./Home";
 import Post from "./Post";
 import Edit from "./Edit";
-export { MockAPI, Login, Signup, Home, Post, Edit };
+import Bookmarks from "./Bookmarks";
+export { MockAPI, Login, Signup, Home, Post, Edit, Bookmarks };

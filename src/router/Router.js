@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import Layout from "../components/Layout";
-import { Login, MockAPI, Signup, Home, Post, Edit } from "../pages";
+import { Login, MockAPI, Signup, Home, Post, Edit, Bookmarks } from "../pages";
 import ProtectedRoute from "./ProtectedRoute";
 
 function Router() {
@@ -9,7 +9,7 @@ function Router() {
       <Route path="/mockman" element={<MockAPI />} />
       <Route path="/login" element={<Login />} />
       <Route path="/" element={<Signup />} />
- 
+
       <Route element={<ProtectedRoute />}>
         <Route
           path="/home"
@@ -38,6 +38,14 @@ function Router() {
             }
           />
         ))}
+        <Route
+          path="/bookmarks"
+          element={
+            <Layout>
+              <Bookmarks />
+            </Layout>
+          }
+        />
       </Route>
     </Routes>
   );
