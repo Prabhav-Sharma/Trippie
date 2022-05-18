@@ -1,15 +1,15 @@
 import {
   AiOutlineEye,
-  AiOutlineHome,
   AiOutlineEyeInvisible,
   AiOutlineHeart,
   AiFillHeart,
+  AiFillHome,
 } from "react-icons/ai";
 import { RiLoaderFill } from "react-icons/ri";
 import { GiShipWheel, GiPlagueDoctorProfile } from "react-icons/gi";
 import {
   BsBookmark,
-  BsBell,
+  BsBellFill,
   BsFillBookmarkCheckFill,
   BsThreeDotsVertical,
 } from "react-icons/bs";
@@ -21,12 +21,12 @@ import { FiShare } from "react-icons/fi";
 export {
   AiOutlineEye,
   AiOutlineEyeInvisible,
+  AiFillHome,
+  BsBellFill,
   RiLoaderFill,
   GiShipWheel,
   GiPlagueDoctorProfile,
   BsBookmark,
-  AiOutlineHome,
-  BsBell,
   BiImage,
   MdGif,
   FaRegLaughBeam,
