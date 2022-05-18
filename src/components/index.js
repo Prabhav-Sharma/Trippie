@@ -2,24 +2,25 @@ import TopBar from "./TopBar";
 import TextInput from "./TextInput";
 import SideNav from "./SideNav";
 import PostCard from "./PostCard";
-import NewPost from "./NewPost";
+import NewContent from "./NewContent";
 import LikeButton from "./PostButtons/LikeButton";
 import BookmarkButton from "./PostButtons/BookmarkButton";
 import MiniUserCard from "./MiniUserCard";
 import SearchUsers from "./SearchUsers";
-import PostFeed from "./PostFeed";
+import Feed from "./Feed";
 import LogoutButton from "./LogoutButton";
-
+import CommentCard from "./CommentCard";
 export {
   TopBar,
   TextInput,
   SideNav,
   PostCard,
-  NewPost,
+  NewContent,
   LikeButton,
   BookmarkButton,
   MiniUserCard,
   SearchUsers,
-  PostFeed,
+  Feed,
   LogoutButton,
+  CommentCard,
 };

@@ -50,10 +50,10 @@ const getLatestFeed = (posts, pageNumber) => {
     .slice(0, pageNumber * 5);
 };
 
-const likeFormatter = (likeCount) => {
-  if (likeCount >= 1000000) return `${(likeCount / 1000000).toFixed(1)}m`;
-  else if (likeCount >= 1000) return `${(likeCount / 1000).toFixed(1)}k`;
-  else return likeCount;
+const unitFormatter = (number) => {
+  if (number >= 1000000) return `${(number / 1000000).toFixed(1)}m`;
+  else if (number >= 1000) return `${(number / 1000).toFixed(1)}k`;
+  else return number;
 };
 
-export { validateSignupFields, searchForUsers, getLatestFeed, likeFormatter };
+export { validateSignupFields, searchForUsers, getLatestFeed, unitFormatter };

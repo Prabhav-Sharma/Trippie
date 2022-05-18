@@ -1,43 +1,38 @@
 import dayjs from "dayjs";
 import {
-  BiComment,
-  FiShare,
+  AiOutlineHeart,
+  AiFillHeart,
   BsThreeDotsVertical,
   FaEdit,
   FaTrash,
 } from "../Utils/icons";
-import { LikeButton, BookmarkButton } from ".";
-import { unitFormatter } from "../Utils/helpers";
-import { useNavigate, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { likeComment, dislikeComment, deleteComment } from "../services";
+import { unitFormatter } from "../Utils/helpers";
 import { useToggle } from "../hooks";
-import { deletePost } from "../services";
+import { useNavigate, useLocation } from "react-router-dom";
 
-function PostCard({ post, location = "HOME" }) {
+function CommentCard({ comment }) {
   const authUsername = useSelector((state) => state.user.username);
   const token = useSelector((state) => state.auth.token);
   const navigate = useNavigate();
-  const browserLocation = useLocation();
   const dispatch = useDispatch();
-
+  const location = useLocation();
   const { toggle: optionsToggle, setToggle: setOptionsToggle } =
     useToggle(false);
 
   const {
-    username,
-    createdAt,
-    likes: { likeCount, likedBy },
-    content,
     _id,
     profileImg,
-    comments,
-  } = post;
+    username,
+    createdAt,
+    content,
+    postId,
+    likes: { likeCount, likedBy },
+  } = comment;
 
   return (
-    <div
-      className="flex flex-row relative bg-transparent border-y border-slate-500 gap-3 p-3 text-white"
-      onClick={() => navigate(`/post/${_id}`)}
-    >
+    <div className="flex flex-row bg-transparent border-y border-slate-500 gap-4 p-3 text-white">
       <div className="profile-icon">
         <img className="rounded-full " src={profileImg} alt={username} />
       </div>
@@ -51,30 +46,23 @@ function PostCard({ post, location = "HOME" }) {
         <p className="text-xs sm:text-sm md:text-base whitespace-pre-wrap">
           {content}
         </p>
-        <div
-          className="w-full  flex flex-row justify-between px-2 self-center "
-          onClick={(e) => e.stopPropagation()}
-        >
-          <span className="flex items-center gap-1">
-            <LikeButton postId={_id} likedBy={likedBy} location={location} />
-            {unitFormatter(likeCount)}
-          </span>
-          <span className="flex items-center gap-1">
-            <BiComment
-              className="text-xl hover:text-sky-500 hover:md:scale-110 cursor-pointer "
-              onClick={() => navigate(`/post/${_id}`, { state: "COMMENT" })}
-            />
-            {unitFormatter(comments.length)}
-          </span>
-          <FiShare className="text-xl hover:text-sky-500 hover:md:scale-110 cursor-pointer" />
-          <BookmarkButton postId={_id} />
-        </div>
       </div>
+      <span className="flex self-center items-center gap-1">
+        {likedBy.some((user) => user.username === authUsername) ? (
+          <AiFillHeart
+            className="text-xl text-sky-500 hover:md:scale-110 cursor-pointer"
+            onClick={() => dislikeComment(postId, _id, token, dispatch)}
+          />
+        ) : (
+          <AiOutlineHeart
+            className="text-xl hover:cursor-pointer hover:md:scale-110"
+            onClick={() => likeComment(postId, _id, token, dispatch)}
+          />
+        )}
+        {unitFormatter(likeCount)}
+      </span>
       {authUsername === username && (
-        <span
-          className="absolute top-4 right-4"
-          onClick={(e) => e.stopPropagation()}
-        >
+        <span className="relative self-center">
           <BsThreeDotsVertical
             className={`${
               optionsToggle && "bg-slate-700"
@@ -89,8 +77,8 @@ function PostCard({ post, location = "HOME" }) {
             <li
               className="hover:cursor-pointer  w-full rounded-md p-1 flex items-center gap-1 hover:bg-slate-700 duration-100 ease-linear"
               onClick={() =>
-                navigate(`/edit/${_id}`, {
-                  state: { from: browserLocation },
+                navigate(`/edit/${postId}/${_id}`, {
+                  state: { from: location },
                 })
               }
             >
@@ -98,11 +86,8 @@ function PostCard({ post, location = "HOME" }) {
               Edit
             </li>
             <li
-              className="hover:cursor-pointer w-full text-red-500 flex rounded-md p-1 items-center gap-1 hover:bg-slate-700 duration-100 ease-linear"
-              onClick={() => {
-                deletePost(_id, token, dispatch);
-                location === "POST" && navigate("/home");
-              }}
+              className="hover:cursor-pointer w-full flex rounded-md p-1 items-center gap-1 text-red-500 hover:bg-slate-700 duration-100 ease-linear"
+              onClick={() => deleteComment(postId, _id, token, dispatch)}
             >
               <FaTrash />
               Delete
@@ -114,4 +99,4 @@ function PostCard({ post, location = "HOME" }) {
   );
 }
 
-export default PostCard;
+export default CommentCard;

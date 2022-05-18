@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { followUser, unfollowUser } from "../services/usersAPI";
+import { followUser, unfollowUser } from "../services";
 import { RiLoaderFill } from "../Utils/icons";
 
 function MiniUserCard({ user }) {

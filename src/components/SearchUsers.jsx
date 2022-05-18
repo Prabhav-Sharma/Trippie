@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { MiniUserCard, TextInput } from ".";
-import { fetchUsers } from "../services/usersAPI";
+import { fetchUsers } from "../services";
 import { searchForUsers } from "../Utils/helpers";
 
 function SearchUsers() {

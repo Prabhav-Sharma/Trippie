@@ -1,8 +1,12 @@
 import { useEffect, useRef, useState, useMemo } from "react";
 import { getLatestFeed } from "../Utils/helpers";
-import { PostCard } from ".";
+import { PostCard, CommentCard } from ".";
 
-function PostFeed({ posts }) {
+function PostFeed({
+  posts,
+  type = "POST",
+  finishText = "You've seen everything. ^_^",
+}) {
   const [pageNumber, setPageNumber] = useState(1);
   const feed = useMemo(
     () => getLatestFeed(posts, pageNumber),
@@ -27,15 +31,27 @@ function PostFeed({ posts }) {
     };
   }, [loadingRef]);
 
+  const ContentFeed = ({ type, feed }) => {
+    switch (type) {
+      case "POST":
+        return feed.map((post) => <PostCard key={post._id} post={post} />);
+
+      case "COMMENT":
+        return feed.map((comment) => (
+          <CommentCard key={comment._id} comment={comment} />
+        ));
+    }
+  };
+
   return (
-    <div className="w-full flex flex-col gap-2 mt-2 mb-14 sm:mb-0">
-      {feed.map((post) => (
-        <PostCard key={post._id} post={post} />
-      ))}
-      <span ref={loadingRef} className="text-white animate-pulse self-center">
-        {posts.length === feed.length
-          ? "You've seen everything. ^_^"
-          : "Loading..."}
+    <div className="w-full flex flex-col gap-4 mt-4 mb-14 sm:mb-0">
+      <ContentFeed type={type} feed={feed} />
+      <span ref={loadingRef} className="text-white  self-center">
+        {posts.length === feed.length ? (
+          finishText
+        ) : (
+          <p className="animate-pulse">Loading...</p>
+        )}
       </span>
     </div>
   );

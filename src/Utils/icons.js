@@ -7,11 +7,17 @@ import {
 } from "react-icons/ai";
 import { RiLoaderFill } from "react-icons/ri";
 import { GiShipWheel, GiPlagueDoctorProfile } from "react-icons/gi";
-import { BsBookmark, BsBell, BsFillBookmarkCheckFill } from "react-icons/bs";
+import {
+  BsBookmark,
+  BsBell,
+  BsFillBookmarkCheckFill,
+  BsThreeDotsVertical,
+} from "react-icons/bs";
 import { MdGif, MdLogout } from "react-icons/md";
-import { FaRegLaughBeam } from "react-icons/fa";
-import { BiImage, BiComment } from "react-icons/bi";
+import { FaRegLaughBeam, FaTrash, FaEdit } from "react-icons/fa";
+import { BiImage, BiComment, BiLoaderAlt } from "react-icons/bi";
 import { FiShare } from "react-icons/fi";
+
 export {
   AiOutlineEye,
   AiOutlineEyeInvisible,
@@ -30,4 +36,8 @@ export {
   BiComment,
   BsFillBookmarkCheckFill,
   MdLogout,
+  BsThreeDotsVertical,
+  FaTrash,
+  BiLoaderAlt,
+  FaEdit,
 };

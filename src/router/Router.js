@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import Layout from "../components/Layout";
-import { Login, MockAPI, Signup, Home } from "../pages";
+import { Login, MockAPI, Signup, Home, Post, Edit } from "../pages";
 import ProtectedRoute from "./ProtectedRoute";
 
 function Router() {
@@ -9,6 +9,7 @@ function Router() {
       <Route path="/mockman" element={<MockAPI />} />
       <Route path="/login" element={<Login />} />
       <Route path="/" element={<Signup />} />
+ 
       <Route element={<ProtectedRoute />}>
         <Route
           path="/home"
@@ -18,6 +19,25 @@ function Router() {
             </Layout>
           }
         />
+        <Route
+          path="/post/:postId"
+          element={
+            <Layout>
+              <Post />
+            </Layout>
+          }
+        />
+        {["/:postId", "/:postId/:commentId"].map((path, index) => (
+          <Route
+            key={index}
+            path={`/edit${path}`}
+            element={
+              <Layout>
+                <Edit />
+              </Layout>
+            }
+          />
+        ))}
       </Route>
     </Routes>
   );

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { updatePosts } from "../redux";
+import { updatePosts, updateCurrentPost } from "../redux";
 
 const fetchPosts = async (dispatcher) => {
   try {
@@ -11,10 +11,11 @@ const fetchPosts = async (dispatcher) => {
 };
 
 //gets post by postId from the db
-const fetchPostById = async (postId, dispatcher) => {
+const fetchPostById = async (postId, dispatcher, updateCurrent = true) => {
   try {
     const response = await axios.get(`/api/posts/${postId}`);
-    dispatcher(getPostById(response.data.post));
+    updateCurrent && dispatcher(updateCurrentPost(response.data.post));
+    return response.data.post;
   } catch (error) {
     console.log(error);
   }
@@ -72,12 +73,14 @@ const editPost = async (postId, postData, token, dispatcher) => {
       data: { postData },
     });
     dispatcher(updatePosts(response.data.posts));
+    return "SUCCESS";
   } catch (error) {
     console.log(error);
+    return "FAILED";
   }
 };
 
-const likePost = async (postId, token, dispatcher) => {
+const likePost = async (postId, token, dispatcher, updatePost = false) => {
   try {
     const response = await axios({
       method: "POST",
@@ -85,13 +88,14 @@ const likePost = async (postId, token, dispatcher) => {
       headers: { authorization: token },
     });
     dispatcher(updatePosts(response.data.posts));
+    updatePost && dispatcher(updateCurrentPost(response.data.post));
   } catch (error) {
     console.log(error);
   }
 };
 
 //This API call dislikes a post of the user.
-const dislikePost = async (postId, token, dispatcher) => {
+const dislikePost = async (postId, token, dispatcher, updatePost = false) => {
   try {
     const response = await axios({
       method: "POST",
@@ -99,6 +103,7 @@ const dislikePost = async (postId, token, dispatcher) => {
       headers: { authorization: token },
     });
     dispatcher(updatePosts(response.data.posts));
+    updatePost && dispatcher(updateCurrentPost(response.data.post));
   } catch (error) {
     console.log(error);
   }

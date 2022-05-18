@@ -16,6 +16,18 @@ import {
   removePostFromBookmarks,
 } from "./bookmarksAPI";
 
+import {
+  getPostComments,
+  addCommentToPost,
+  editComment,
+  deleteComment,
+  likeComment,
+  dislikeComment,
+  getCommentById,
+} from "./commentsAPI";
+
+import { fetchUsers, followUser, unfollowUser } from "./usersAPI";
+
 export {
   login,
   signup,
@@ -31,4 +43,14 @@ export {
   fetchBookmarks,
   addPostToBookmarks,
   removePostFromBookmarks,
+  getPostComments,
+  getCommentById,
+  addCommentToPost,
+  editComment,
+  deleteComment,
+  likeComment,
+  dislikeComment,
+  fetchUsers,
+  followUser,
+  unfollowUser,
 };

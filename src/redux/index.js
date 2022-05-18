@@ -12,6 +12,8 @@ import {
   appDataReducer,
   updatePosts,
   updateUsers,
+  updateCurrentPost,
+  updateComments,
 } from "./appData/appDataReducer";
 
 export {
@@ -26,4 +28,6 @@ export {
   updatePosts,
   updateUsers,
   updateFollowing,
+  updateCurrentPost,
+  updateComments,
 };
