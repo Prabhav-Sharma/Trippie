@@ -7,7 +7,7 @@ import {
   FaTrash,
 } from "../Utils/icons";
 import { LikeButton, BookmarkButton } from ".";
-import { likeFormatter } from "../Utils/helpers";
+import { unitFormatter } from "../Utils/helpers";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useToggle } from "../hooks";
@@ -30,6 +30,7 @@ function PostCard({ post, location = "HOME" }) {
     content,
     _id,
     profileImg,
+    comments,
   } = post;
 
   return (
@@ -56,12 +57,15 @@ function PostCard({ post, location = "HOME" }) {
         >
           <span className="flex items-center gap-1">
             <LikeButton postId={_id} likedBy={likedBy} location={location} />
-            {likeFormatter(likeCount)}
+            {unitFormatter(likeCount)}
           </span>
-          <BiComment
-            className="text-xl hover:text-sky-500 hover:md:scale-110 cursor-pointer "
-            onClick={() => navigate(`/post/${_id}`, { state: "COMMENT" })}
-          />
+          <span className="flex items-center gap-1">
+            <BiComment
+              className="text-xl hover:text-sky-500 hover:md:scale-110 cursor-pointer "
+              onClick={() => navigate(`/post/${_id}`, { state: "COMMENT" })}
+            />
+            {unitFormatter(comments.length)}
+          </span>
           <FiShare className="text-xl hover:text-sky-500 hover:md:scale-110 cursor-pointer" />
           <BookmarkButton postId={_id} />
         </div>
