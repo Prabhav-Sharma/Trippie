@@ -6,13 +6,13 @@ import ProtectedRoute from "./ProtectedRoute";
 function Router() {
   return (
     <Routes>
-      <Route path="/mockman" element={<MockAPI />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/" element={<Signup />} />
+      <Route path="mockman" element={<MockAPI />} />
+      <Route path="login" element={<Login />} />
+      <Route path="" element={<Signup />} />
 
       <Route element={<ProtectedRoute />}>
         <Route
-          path="/home"
+          path="home"
           element={
             <Layout>
               <Home />
@@ -39,7 +39,7 @@ function Router() {
           />
         ))}
         <Route
-          path="/bookmarks"
+          path="bookmarks"
           element={
             <Layout>
               <Bookmarks />
