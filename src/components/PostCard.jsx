@@ -52,19 +52,19 @@ function PostCard({ post, location = "HOME" }) {
           {content}
         </p>
         <div
-          className="w-full  flex flex-row justify-between px-2 self-center "
+          className="w-full text-xs sm:text-base flex flex-row justify-between px-2 self-center "
           onClick={(e) => e.stopPropagation()}
         >
           <span className="flex items-center gap-1">
             <LikeButton postId={_id} likedBy={likedBy} location={location} />
-            {unitFormatter(likeCount)}
+            <p className="text-sm">{unitFormatter(likeCount)}</p>
           </span>
           <span className="flex items-center gap-1">
             <BiComment
               className="text-xl hover:text-sky-500 hover:md:scale-110 cursor-pointer "
               onClick={() => navigate(`/post/${_id}`, { state: "COMMENT" })}
             />
-            {unitFormatter(comments.length)}
+            <p className="text-sm">{unitFormatter(comments.length)}</p>
           </span>
           <FiShare className="text-xl hover:text-sky-500 hover:md:scale-110 cursor-pointer" />
           <BookmarkButton postId={_id} />
@@ -87,7 +87,7 @@ function PostCard({ post, location = "HOME" }) {
             } p-1 h-max w-20 max-h-32 flex flex-col toggle-menu gap-2 items-start bg-gray-800 border border-solid rounded-md border-gray-500 -top-0 -left-21 ml`}
           >
             <li
-              className="hover:cursor-pointer  w-full rounded-md p-1 flex items-center gap-1 hover:bg-slate-700 duration-100 ease-linear"
+              className="hover:cursor-pointer text-sm sm:text-base w-full rounded-md p-1 flex items-center gap-1 hover:bg-slate-700 duration-100 ease-linear"
               onClick={() =>
                 navigate(`/edit/${_id}`, {
                   state: { from: browserLocation },
@@ -98,7 +98,7 @@ function PostCard({ post, location = "HOME" }) {
               Edit
             </li>
             <li
-              className="hover:cursor-pointer w-full text-red-500 flex rounded-md p-1 items-center gap-1 hover:bg-slate-700 duration-100 ease-linear"
+              className="hover:cursor-pointer text-sm sm:text-base w-full text-red-500 flex rounded-md p-1 items-center gap-1 hover:bg-slate-700 duration-100 ease-linear"
               onClick={() => {
                 deletePost(_id, token, dispatch);
                 location === "POST" && navigate("/home");

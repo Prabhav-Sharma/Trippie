@@ -59,7 +59,7 @@ function CommentCard({ comment }) {
             onClick={() => likeComment(postId, _id, token, dispatch)}
           />
         )}
-        {unitFormatter(likeCount)}
+        <p className="text-sm">{unitFormatter(likeCount)}</p>
       </span>
       {authUsername === username && (
         <span className="relative self-center">

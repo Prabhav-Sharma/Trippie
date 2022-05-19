@@ -38,14 +38,16 @@ function Post() {
       <span className="flex items-center justify-start gap-5 w-full">
         <NavLink
           to="/home"
-          className="text-white text-5xl w-max -translate-y-1.5 h-min ml-2"
+          className="text-white text-3xl lg:text-5xl w-max -translate-y-1.5 h-min ml-2"
         >
           ‹
         </NavLink>
-        <h1 className="text-white text-xl w-max">Post</h1>
+        <h1 className="text-white text-sm sm:text-base md:text-lg w-max">
+          Post
+        </h1>
       </span>
       {loading ? (
-        <div className=" flex justify-center items-center text-3xl text-white gap-2 w-full ">
+        <div className=" flex justify-center items-center text-xl  md:text-2xl text-white gap-2 w-full ">
           Loading <BiLoaderAlt className=" animate-spin " />
         </div>
       ) : (
