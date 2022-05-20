@@ -46,3 +46,12 @@ body {
   .-left-21{
     left:-5.25rem
   }
+
+  .max-w-64{
+    max-width: 16rem;
+  }
+
+  .profile-large{
+    max-width: 6rem;
+    min-width: 6rem;
+  }
