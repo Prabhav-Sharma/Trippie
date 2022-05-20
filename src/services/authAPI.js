@@ -1,5 +1,6 @@
 import axios from "axios";
-import { authenticate, addUser } from "../redux";
+import { authenticate, addUser, logout } from "../redux";
+import { toast } from "react-toastify";
 
 const signup = async (requestBody, dispatcher) => {
   try {
@@ -11,12 +12,10 @@ const signup = async (requestBody, dispatcher) => {
     localStorage.setItem("token", response.data.encodedToken);
     dispatcher(authenticate(response.data.encodedToken));
     dispatcher(addUser(response.data.createdUser));
-
-    // To be added later: toast.success(`Welcome on board, ${response.data.createdUser.fullName}`);
     return "SUCCESS";
   } catch (e) {
     console.log(e);
-    // To be added later:toast.error("Was that a thud in the server room!?");
+    toast.error("Something's not right, I can feel it!");
     return "FAILED";
   }
 };
@@ -32,11 +31,10 @@ const login = async (requestBody, dispatcher) => {
     localStorage.setItem("token", response.data.encodedToken);
     dispatcher(authenticate(response.data.encodedToken));
     dispatcher(addUser(response.data.foundUser));
-    // To be added later:toast.success(`Welcome back ${response.data.foundUser.fullName}`);
     return "SUCCESS";
   } catch (e) {
     console.error(e);
-    // To be added later: toast.error("Was that a thud in the server room!?");
+    toast.error("Something's not right, I can feel it!");
     return "FAILED";
   }
 };
@@ -51,6 +49,8 @@ const fetchAuthUserDetails = async (token, dispatcher) => {
     dispatcher(addUser(response.data.user));
   } catch (e) {
     console.log(e);
+    toast.info("You need to login!");
+    dispatcher(logout());
   }
 };
 
