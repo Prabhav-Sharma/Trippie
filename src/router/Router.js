@@ -1,6 +1,16 @@
 import { Route, Routes } from "react-router-dom";
 import Layout from "../components/Layout";
-import { Login, MockAPI, Signup, Home, Post, Edit, Bookmarks } from "../pages";
+import {
+  Login,
+  MockAPI,
+  Signup,
+  Home,
+  Post,
+  Edit,
+  Bookmarks,
+  UserProfile,
+  Profile,
+} from "../pages";
 import ProtectedRoute from "./ProtectedRoute";
 
 function Router() {
@@ -43,6 +53,23 @@ function Router() {
           element={
             <Layout>
               <Bookmarks />
+            </Layout>
+          }
+        />
+        <Route
+          path="profile"
+          element={
+            <Layout>
+              <UserProfile />
+            </Layout>
+          }
+        />
+
+        <Route
+          path="/profiles/:userId"
+          element={
+            <Layout>
+              <Profile />
             </Layout>
           }
         />
