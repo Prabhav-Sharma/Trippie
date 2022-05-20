@@ -202,11 +202,9 @@ export const deletePostCommentHandler = function (schema, request) {
 };
 
 /**
- * This handler handles upvoting a comment of a post in the db.
+ * This handler handles liking a comment of a post in the db.
  * send POST Request at /api/comments/upvote/:postId/:commentId
  * */
-
-// export const upvotePostCommentHandler = function (schema, request) {
 export const likePostCommentHandler = function (schema, request) {
   const user = requiresAuth.call(this, request);
   try {
@@ -226,22 +224,11 @@ export const likePostCommentHandler = function (schema, request) {
     const commentIndex = post.comments.findIndex(
       (comment) => comment._id === commentId
     );
-
-    // if (
-    //   post.comments[commentIndex].likes.likedBy.some(
-    //     (currUser) => currUser._id === user._id
-    //   )
-    // ) {
-    //   return new Response(
-    //     400,
-    //     {},
-    //     { errors: ["Cannot upvote a post that is already upvoted. "] }
-    //   );
-    // }
-    // post.comments[commentIndex].votes.downvotedBy = post.comments[
-    //   commentIndex
-    // ].votes.downvotedBy.filter((currUser) => currUser._id !== user._id); //Commented as a security against future use cases
-    post.comments[commentIndex].likes.likedBy.push(user);
+    post.comments[commentIndex].likes.likedBy.push({
+      username: user.username,
+      _id: user._id,
+      profileImg: user.profileImg,
+    });
     post.comments[commentIndex].likes.likeCount += 1;
     this.db.posts.update({ _id: postId }, { ...post, updatedAt: formatDate() });
     return new Response(201, {}, { comments: post.comments });
@@ -257,7 +244,7 @@ export const likePostCommentHandler = function (schema, request) {
 };
 
 /**
- * This handler handles downvoting a comment of a post in the db.
+ * This handler handles disliking a comment of a post in the db.
  * send POST Request at /api/comments/downvote/:postId/:commentId
  * */
 
@@ -280,24 +267,10 @@ export const dislikePostCommentHandler = function (schema, request) {
     const commentIndex = post.comments.findIndex(
       (comment) => comment._id === commentId
     );
-
-    // if (
-    //   post.comments[commentIndex].votes.downvotedBy.some(
-    //     (currUser) => currUser._id === user._id
-    //   )
-    // ) {
-    //   return new Response(
-    //     400,
-    //     {},
-    //     { errors: ["Cannot downvote a post that is already downvoted. "] }
-    //   );
-    // } //Commented as a security against future use cases
     post.comments[commentIndex].likes.likedBy = post.comments[
       commentIndex
     ].likes.likedBy.filter((currUser) => currUser._id !== user._id);
     post.comments[commentIndex].likes.likeCount -= 1;
-    // post.comments[commentIndex].votes.downvotedBy.push(user); //Commented as a security against future use cases
-
     this.db.posts.update({ _id: postId }, { ...post, updatedAt: formatDate() });
     return new Response(201, {}, { comments: post.comments });
   } catch (error) {
