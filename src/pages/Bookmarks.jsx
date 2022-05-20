@@ -25,9 +25,7 @@ function Bookmarks() {
       <Feed
         posts={bookmarks}
         finishText={`${
-          bookmarks.length === 0
-            ? "Bookmark posts to see them here!"
-            : "No more bookmarks :/"
+          bookmarks.length === 0 ? "Bookmark posts to see them here!" : ""
         }`}
       />
     </>
