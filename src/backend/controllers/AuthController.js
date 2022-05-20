@@ -40,8 +40,10 @@ export const signupHandler = function (schema, request) {
       followers: [],
       following: [],
       bookmarks: [],
+      portfolio: "",
+      bio: "",
       profileImg:
-        "https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg",
+        "https://res.cloudinary.com/carsmart/image/upload/v1652980579/Trippie/1-panda_ewbk0n.png",
     };
     const createdUser = schema.users.create(newUser);
     const encodedToken = sign(
