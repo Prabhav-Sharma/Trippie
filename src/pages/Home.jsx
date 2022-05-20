@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDocumentTitle } from "../hooks";
 import { useDispatch, useSelector } from "react-redux";
 import { Feed, NewContent } from "../components";
-import { fetchPosts, fetchAuthUserDetails, addPost } from "../services";
+import { fetchPosts, addPost } from "../services";
 
 function Home() {
   useDocumentTitle("Home");
@@ -12,10 +12,6 @@ function Home() {
 
   useEffect(() => {
     fetchPosts(dispatch);
-  }, []);
-
-  useEffect(() => {
-    fetchAuthUserDetails(token, dispatch);
   }, []);
 
   const addPostHandler = async (text) => {
