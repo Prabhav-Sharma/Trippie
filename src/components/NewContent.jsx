@@ -14,7 +14,7 @@ function NewPost({
 }) {
   const [contentText, setContentText] = useState(initialContent);
   const { toggle: saving, setToggle: setSaving } = useToggle(false);
-  const { profileImg, username } = useSelector((state) => state.user);
+  const { profileImg, username, _id } = useSelector((state) => state.user);
   const inputRef = useRef(null);
   const navigate = useNavigate();
 
@@ -38,7 +38,13 @@ function NewPost({
 
   return (
     <div className="flex items-start gap-2 bg-transparent border-y border-slate-500 p-3">
-      <div className="w-12">
+      <div
+        className="w-12 cursor-pointer"
+        onClick={(e) => {
+          e.stopPropagation();
+          navigate("/profile");
+        }}
+      >
         <img className="rounded-full" src={profileImg} alt={username} />
       </div>
       <div className="flex flex-col grow gap-2">

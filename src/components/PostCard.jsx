@@ -31,19 +31,33 @@ function PostCard({ post, location = "HOME" }) {
     _id,
     profileImg,
     comments,
+    userId,
   } = post;
 
+  const navigateToUserProfile = (e) => {
+    e.stopPropagation();
+    navigate(`/profiles/${userId}`);
+  };
   return (
     <div
       className="flex flex-row relative bg-transparent border-y border-slate-500 gap-3 p-3 text-white"
       onClick={() => navigate(`/post/${_id}`)}
     >
-      <div className="profile-icon">
+      <div
+        className="profile-icon cursor-pointer"
+        onClick={navigateToUserProfile}
+      >
         <img className="rounded-full " src={profileImg} alt={username} />
       </div>
       <div className="flex flex-col grow gap-4">
         <span className="flex flex-row gap-3 items-baseline">
-          <h4 className="font-openSans font-normal text-sm">@{username}</h4>•
+          <h4
+            className="font-openSans font-normal text-sm cursor-pointer"
+            onClick={navigateToUserProfile}
+          >
+            @{username}
+          </h4>
+          •
           <h5 className="text-xs font-openSans">
             {dayjs(new Date(createdAt)).format("ddd, DD MMM 'YY")}
           </h5>
