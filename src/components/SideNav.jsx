@@ -42,7 +42,7 @@ function SideNav() {
         <span className="hidden text-base lg:inline">Explore</span>
       </NavLink>
       <NavLink
-        to="/notifications"
+        to="/alerts"
         className={({ isActive }) =>
           `  ${isActive && activeStyles} ${tabStyles}`
         }
