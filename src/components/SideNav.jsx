@@ -9,16 +9,15 @@ import {
 
 function SideNav() {
   const tabStyles =
-    "flex flex-row gap-2 text-xl items-center ease-linear, duration-200";
+    "flex flex-row gap-2 text-xl items-center ease-linear duration-100 text-white hover:text-blue-500 sm:hover:bg-white p-1.5 rounded-md";
 
-  const activeStyles = "text-blue-400";
-  const inactiveStyles = "text-white hover:text-blue-400";
+  const activeStyles = "text-blue-500 bg-white";
   return (
     <aside className="fixed bottom-0 border-t-2 p-4 w-full z-10 bg-gray-800 border-blue-500 sm:border-slate-400 sm:border-l-0 sm:border sm:gap-10 flex flex-row font-robotoFlex sm:rounded-md lg:mt-2 justify-around sm:flex-col sm:static sm:bottom-none sm:w-max sm:justify-start lg:items-start lg:w-64 lg:h-max lg:ml-1 lg:border-none ">
       <NavLink
         to="/home"
         className={({ isActive }) =>
-          `  ${isActive ? activeStyles : inactiveStyles} ${tabStyles}`
+          `  ${isActive && activeStyles} ${tabStyles}`
         }
       >
         <AiFillHome />
@@ -27,7 +26,7 @@ function SideNav() {
       <NavLink
         to="/bookmarks"
         className={({ isActive }) =>
-          `  ${isActive ? activeStyles : inactiveStyles} ${tabStyles}`
+          `  ${isActive && activeStyles} ${tabStyles}`
         }
       >
         <BsFillBookmarkCheckFill className="text-lg" />
@@ -36,7 +35,7 @@ function SideNav() {
       <NavLink
         to="/explore"
         className={({ isActive }) =>
-          `  ${isActive ? activeStyles : inactiveStyles} ${tabStyles}`
+          `  ${isActive && activeStyles} ${tabStyles}`
         }
       >
         <GiShipWheel />
@@ -45,16 +44,16 @@ function SideNav() {
       <NavLink
         to="/notifications"
         className={({ isActive }) =>
-          `  ${isActive ? activeStyles : inactiveStyles} ${tabStyles}`
+          `  ${isActive && activeStyles} ${tabStyles}`
         }
       >
         <BsBellFill />
-        <span className="hidden text-base lg:inline"> Notifications</span>
+        <span className="hidden text-base lg:inline"> Alerts</span>
       </NavLink>
       <NavLink
         to="/profile"
         className={({ isActive }) =>
-          `  ${isActive ? activeStyles : inactiveStyles} ${tabStyles}`
+          `  ${isActive && activeStyles} ${tabStyles}`
         }
       >
         <GiPlagueDoctorProfile />
