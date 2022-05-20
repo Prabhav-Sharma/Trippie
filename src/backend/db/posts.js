@@ -20,6 +20,7 @@ export const posts = [
     username: "adarshbalika",
     createdAt: new Date("11/24/2019"),
     updatedAt: formatDate(),
+    userId: "a81caa3a-a643-4841-85ee-79272b22a4a0",
     profileImg:
       "https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg",
   },
@@ -33,11 +34,11 @@ export const posts = [
       dislikedBy: [],
     },
     comments: [],
-    username: "shubhamsoni",
+    username: "sukanyasen530",
     createdAt: formatDate(),
     updatedAt: formatDate(),
-    profileImg:
-      "https://camo.githubusercontent.com/fbfcb9e3dc648adc93bef37c718db16c52f617ad055a26de6dc3c21865c3321d/68747470733a2f2f7777772e766563746f726c6f676f2e7a6f6e652f6c6f676f732f6769742d73636d2f6769742d73636d2d69636f6e2e737667",
+    userId: "3e723f53-64de-4bc4-8011-5d7985dd0dd6",
+    profileImg: "https://avatars.githubusercontent.com/u/76467704?v=4",
   },
   {
     _id: uuid(),
@@ -52,6 +53,7 @@ export const posts = [
     username: "adarshbalika",
     createdAt: new Date("11/24/2019"),
     updatedAt: formatDate(),
+    userId: "a81caa3a-a643-4841-85ee-79272b22a4a0",
     profileImg:
       "https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg",
   },
@@ -65,11 +67,12 @@ export const posts = [
       dislikedBy: [],
     },
     comments: [],
-    username: "shubhamsoni",
+    username: "prabhavsharmaa",
     createdAt: formatDate(),
     updatedAt: formatDate(),
+    userId: "dfb7a1e0-cd02-489d-ab70-7e40b49441cc",
     profileImg:
-      "https://camo.githubusercontent.com/fbfcb9e3dc648adc93bef37c718db16c52f617ad055a26de6dc3c21865c3321d/68747470733a2f2f7777772e766563746f726c6f676f2e7a6f6e652f6c6f676f732f6769742d73636d2f6769742d73636d2d69636f6e2e737667",
+      "https://pbs.twimg.com/profile_images/1231267389108416513/cmhTnYFm_400x400.jpg",
   },
   {
     _id: uuid(),
@@ -84,6 +87,7 @@ export const posts = [
     username: "adarshbalika",
     createdAt: new Date("11/24/2019"),
     updatedAt: formatDate(),
+    userId: "a81caa3a-a643-4841-85ee-79272b22a4a0",
     profileImg:
       "https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg",
   },
@@ -97,11 +101,11 @@ export const posts = [
       dislikedBy: [],
     },
     comments: [],
-    username: "shubhamsoni",
+    username: "tanaypratap",
     createdAt: formatDate(),
     updatedAt: formatDate(),
-    profileImg:
-      "https://camo.githubusercontent.com/fbfcb9e3dc648adc93bef37c718db16c52f617ad055a26de6dc3c21865c3321d/68747470733a2f2f7777772e766563746f726c6f676f2e7a6f6e652f6c6f676f732f6769742d73636d2f6769742d73636d2d69636f6e2e737667",
+    userId: "93602bd7-c49b-40cb-8347-72abc87ddc88",
+    profileImg: "https://avatars.githubusercontent.com/u/10216863?v=4",
   },
   {
     _id: uuid(),
@@ -116,6 +120,7 @@ export const posts = [
     username: "adarshbalika",
     createdAt: new Date("11/24/2019"),
     updatedAt: formatDate(),
+    userId: "a81caa3a-a643-4841-85ee-79272b22a4a0",
     profileImg:
       "https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg",
   },
@@ -129,11 +134,12 @@ export const posts = [
       dislikedBy: [],
     },
     comments: [],
-    username: "shubhamsoni",
+    username: "prabhavsharmaa",
     createdAt: formatDate(),
     updatedAt: formatDate(),
+    userId: "dfb7a1e0-cd02-489d-ab70-7e40b49441cc",
     profileImg:
-      "https://camo.githubusercontent.com/fbfcb9e3dc648adc93bef37c718db16c52f617ad055a26de6dc3c21865c3321d/68747470733a2f2f7777772e766563746f726c6f676f2e7a6f6e652f6c6f676f732f6769742d73636d2f6769742d73636d2d69636f6e2e737667",
+      "https://pbs.twimg.com/profile_images/1231267389108416513/cmhTnYFm_400x400.jpg",
   },
   {
     _id: uuid(),
@@ -148,6 +154,7 @@ export const posts = [
     username: "adarshbalika",
     createdAt: new Date("11/24/2019"),
     updatedAt: formatDate(),
+    userId: "a81caa3a-a643-4841-85ee-79272b22a4a0",
     profileImg:
       "https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg",
   },
@@ -161,11 +168,12 @@ export const posts = [
       dislikedBy: [],
     },
     comments: [],
-    username: "shubhamsoni",
+    username: "prabhavsharmaa",
     createdAt: formatDate(),
     updatedAt: formatDate(),
+    userId: "dfb7a1e0-cd02-489d-ab70-7e40b49441cc",
     profileImg:
-      "https://camo.githubusercontent.com/fbfcb9e3dc648adc93bef37c718db16c52f617ad055a26de6dc3c21865c3321d/68747470733a2f2f7777772e766563746f726c6f676f2e7a6f6e652f6c6f676f732f6769742d73636d2f6769742d73636d2d69636f6e2e737667",
+      "https://pbs.twimg.com/profile_images/1231267389108416513/cmhTnYFm_400x400.jpg",
   },
   {
     _id: uuid(),
@@ -177,11 +185,12 @@ export const posts = [
       dislikedBy: [],
     },
     comments: [],
-    username: "adarshbalika",
+    username: "prabhavsharmaa",
     createdAt: new Date("11/24/2019"),
     updatedAt: formatDate(),
+    userId: "a81caa3a-a643-4841-85ee-79272b22a4a0",
     profileImg:
-      "https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg",
+      "https://pbs.twimg.com/profile_images/1231267389108416513/cmhTnYFm_400x400.jpg",
   },
   {
     _id: uuid(),
@@ -193,10 +202,11 @@ export const posts = [
       dislikedBy: [],
     },
     comments: [],
-    username: "shubhamsoni",
+    username: "prabhavsharmaa",
     createdAt: formatDate(),
     updatedAt: formatDate(),
+    userId: "dfb7a1e0-cd02-489d-ab70-7e40b49441cc",
     profileImg:
-      "https://camo.githubusercontent.com/fbfcb9e3dc648adc93bef37c718db16c52f617ad055a26de6dc3c21865c3321d/68747470733a2f2f7777772e766563746f726c6f676f2e7a6f6e652f6c6f676f732f6769742d73636d2f6769742d73636d2d69636f6e2e737667",
+      "https://pbs.twimg.com/profile_images/1231267389108416513/cmhTnYFm_400x400.jpg",
   },
 ];
