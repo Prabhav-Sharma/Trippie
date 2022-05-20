@@ -1,16 +1,15 @@
 import { useEffect, useRef, useState, useMemo } from "react";
-import { getLatestFeed } from "../Utils/helpers";
+import { getSortedFeed } from "../Utils/helpers";
 import { PostCard, CommentCard } from ".";
+import { IoMdFunnel } from "../Utils/icons";
 
-function PostFeed({
-  posts,
-  type = "POST",
-  finishText = "You've seen everything. ^_^",
-}) {
+function Feed({ posts, type = "POST", finishText = "" }) {
   const [pageNumber, setPageNumber] = useState(1);
+  const [sortBy, setSortBy] = useState("Latest");
+  const [sortByToggle, setSortByToggle] = useState(false);
   const feed = useMemo(
-    () => getLatestFeed(posts, pageNumber),
-    [pageNumber, posts]
+    () => getSortedFeed(posts, pageNumber, sortBy),
+    [pageNumber, posts, sortBy]
   );
 
   const loadingRef = useRef(null);
@@ -45,6 +44,40 @@ function PostFeed({
 
   return (
     <div className="w-full flex flex-col gap-4 mt-4 mb-14 sm:mb-0">
+      {feed.length !== 0 && (
+        <div className="flex flex-col relative gap-1.5 items-center self-end mr-2 p-1 rounded-md font-normal text-blue-600 bg-white">
+          <span
+            className="flex w-36 justify-center items-center gap-1 px-1.5 cursor-pointer"
+            onClick={() => setSortByToggle((toggle) => !toggle)}
+          >
+            <IoMdFunnel /> Sort: {sortBy}
+          </span>
+          <ul
+            className={`${
+              sortByToggle ? "flex" : "hidden"
+            } -translate-y-1 absolute bg-white rounded-md top-10 z-20 w-full flex-col gap-1 items-center pb-1`}
+          >
+            <li
+              className="hover:text-blue-700 cursor-pointer"
+              onClick={() => setSortBy("Latest")}
+            >
+              Latest
+            </li>
+            <li
+              className="hover:text-blue-700 cursor-pointer"
+              onClick={() => setSortBy("Oldest")}
+            >
+              Oldest
+            </li>
+            <li
+              className="hover:text-blue-700 cursor-pointer"
+              onClick={() => setSortBy("Trending")}
+            >
+              Trending
+            </li>
+          </ul>
+        </div>
+      )}
       <ContentFeed type={type} feed={feed} />
       <span ref={loadingRef} className="text-white  self-center">
         {posts.length === feed.length ? (
@@ -57,4 +90,4 @@ function PostFeed({
   );
 }
 
-export default PostFeed;
+export default Feed;
