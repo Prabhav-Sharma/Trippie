@@ -9,6 +9,7 @@ function TextInput({
   styles = "",
   type = "text",
   maxLength = "100",
+  textColor = "text-black",
   reference,
 }) {
   const { toggle: visible, setToggle: setVisible } = useToggle(false);
@@ -55,7 +56,7 @@ function TextInput({
     );
 
   return (
-    <fieldset className="flex w-full flex-col items-center text-black">
+    <fieldset className={`flex w-full flex-col items-center ${textColor}`}>
       <legend className="pl-3 mb-1 font-robotoFlex">{legend}</legend>
       {input}
     </fieldset>
