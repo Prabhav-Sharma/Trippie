@@ -13,10 +13,11 @@ import {
   BsFillBookmarkCheckFill,
   BsThreeDotsVertical,
 } from "react-icons/bs";
-import { MdGif, MdLogout } from "react-icons/md";
+import { MdGif, MdLogout, MdOutlineFileUpload } from "react-icons/md";
 import { FaRegLaughBeam, FaTrash, FaEdit } from "react-icons/fa";
 import { BiImage, BiComment, BiLoaderAlt } from "react-icons/bi";
 import { FiShare } from "react-icons/fi";
+import { GrClose } from "react-icons/gr";
 
 export {
   AiOutlineEye,
@@ -40,4 +41,6 @@ export {
   FaTrash,
   BiLoaderAlt,
   FaEdit,
+  MdOutlineFileUpload,
+  GrClose,
 };

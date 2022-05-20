@@ -1,5 +1,5 @@
 import axios from "axios";
-import { updateUsers, updateFollowing } from "../redux";
+import { updateUsers, updateFollowing, addUser } from "../redux";
 
 const fetchUsers = async (dispatcher) => {
   try {
@@ -10,6 +10,30 @@ const fetchUsers = async (dispatcher) => {
   }
 };
 
+const fetchUserById = async (userId, dispatcher) => {
+  try {
+    const response = await axios.get(`/api/users/${userId}`);
+    dispatcher(response.data.user);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const editUserDetails = async (userData, token, dispatcher) => {
+  try {
+    const response = await axios({
+      method: "POST",
+      url: "/api/users/edit",
+      headers: { authorization: token },
+      data: { userData },
+    });
+    dispatcher(addUser(response.data.user));
+    return "SUCCESS";
+  } catch (e) {
+    console.log(e);
+    return "FAILED";
+  }
+};
 const followUser = async (followUserId, token, dispatcher) => {
   try {
     const response = await axios({
@@ -37,4 +61,4 @@ const unfollowUser = async (followUserId, token, dispatcher) => {
   }
 };
 
-export { fetchUsers, followUser, unfollowUser };
+export { fetchUsers, fetchUserById, followUser, unfollowUser, editUserDetails };

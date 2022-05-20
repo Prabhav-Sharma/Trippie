@@ -10,6 +10,9 @@ import SearchUsers from "./SearchUsers";
 import Feed from "./Feed";
 import LogoutButton from "./LogoutButton";
 import CommentCard from "./CommentCard";
+import ProfileCard from "./ProfileCard";
+import FollowButton from "./FollowButton";
+import ProfileEditModal from "./ProfileEditModal";
 export {
   TopBar,
   TextInput,
@@ -23,4 +26,7 @@ export {
   Feed,
   LogoutButton,
   CommentCard,
+  ProfileCard,
+  ProfileEditModal,
+  FollowButton,
 };

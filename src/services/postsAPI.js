@@ -14,7 +14,7 @@ const fetchPosts = async (dispatcher) => {
 const fetchPostById = async (postId, dispatcher, updateCurrent = true) => {
   try {
     const response = await axios.get(`/api/posts/${postId}`);
-    updateCurrent && dispatcher(updateCurrentPost(response.data.post));
+    updateCurrent && dispatcher(updateCurrentPost(response.data.post)); //Updates the currentPost value in the appData store stata
     return response.data.post;
   } catch (error) {
     console.log(error);
@@ -25,7 +25,7 @@ const fetchPostById = async (postId, dispatcher, updateCurrent = true) => {
 const fetchAllUserPosts = async (username, dispatcher) => {
   try {
     const response = await axios.get(`/api/posts/user/${username}`);
-    dispatcher(getUserPosts(response.data.posts));
+    dispatcher(response.data.posts);
   } catch (error) {
     console.log(error);
   }
