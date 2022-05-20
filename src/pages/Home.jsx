@@ -8,6 +8,8 @@ function Home() {
   useDocumentTitle("Home");
   const posts = useSelector((state) => state.appData.posts);
   const token = useSelector((state) => state.auth.token);
+  const following = useSelector((state) => state.user.following);
+  const authUserId = useSelector((state) => state.user._id);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -21,7 +23,14 @@ function Home() {
   return (
     <>
       <NewContent callback={addPostHandler} />
-      <Feed posts={posts} />
+      <Feed
+        finishText="Follow more users to see their posts!"
+        posts={posts.filter(
+          (post) =>
+            following.some((user) => user._id === post.userId) ||
+            post.userId === authUserId
+        )}
+      />
     </>
   );
 }

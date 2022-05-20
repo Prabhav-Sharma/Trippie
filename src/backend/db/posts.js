@@ -188,7 +188,7 @@ export const posts = [
     username: "prabhavsharmaa",
     createdAt: new Date("11/24/2019"),
     updatedAt: formatDate(),
-    userId: "a81caa3a-a643-4841-85ee-79272b22a4a0",
+    userId: "dfb7a1e0-cd02-489d-ab70-7e40b49441cc",
     profileImg:
       "https://pbs.twimg.com/profile_images/1231267389108416513/cmhTnYFm_400x400.jpg",
   },

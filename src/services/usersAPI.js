@@ -1,5 +1,6 @@
 import axios from "axios";
 import { updateUsers, updateFollowing, addUser } from "../redux";
+import { toast } from "react-toastify";
 
 const fetchUsers = async (dispatcher) => {
   try {
@@ -31,6 +32,7 @@ const editUserDetails = async (userData, token, dispatcher) => {
     return "SUCCESS";
   } catch (e) {
     console.log(e);
+    toast.error("Facing just a little bit of an issue");
     return "FAILED";
   }
 };
@@ -44,6 +46,7 @@ const followUser = async (followUserId, token, dispatcher) => {
     dispatcher(updateFollowing(response.data.following));
   } catch (error) {
     console.log(error);
+    toast.error("Facing just a little bit of an issue!");
   }
 };
 
@@ -58,6 +61,7 @@ const unfollowUser = async (followUserId, token, dispatcher) => {
     dispatcher(updateFollowing(response.data.following));
   } catch (error) {
     console.log(error);
+    toast.error("Dave, our server, isn't that great!");
   }
 };
 

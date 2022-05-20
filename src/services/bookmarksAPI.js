@@ -1,5 +1,6 @@
 import axios from "axios";
 import { updateBookmarks } from "../redux";
+import { toast } from "react-toastify";
 
 //This API call adds a post to user bookmarks.
 const addPostToBookmarks = async (postId, token, dispatcher) => {
@@ -11,6 +12,7 @@ const addPostToBookmarks = async (postId, token, dispatcher) => {
     });
     dispatcher(updateBookmarks(response.data.bookmarks));
   } catch (error) {
+    toast.error("Couldn't bookmark, try later!");
     console.log(error);
   }
 };
@@ -23,9 +25,9 @@ const removePostFromBookmarks = async (postId, token, dispatcher) => {
       url: `/api/users/remove-bookmark/${postId}`,
       headers: { authorization: token },
     });
-
     dispatcher(updateBookmarks(response.data.bookmarks));
   } catch (error) {
+    toast.error("The servers wants to keep this one here for now!");
     console.log(error);
   }
 };

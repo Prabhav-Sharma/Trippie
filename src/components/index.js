@@ -13,6 +13,7 @@ import CommentCard from "./CommentCard";
 import ProfileCard from "./ProfileCard";
 import FollowButton from "./FollowButton";
 import ProfileEditModal from "./ProfileEditModal";
+import Layout from "./Layout";
 export {
   TopBar,
   TextInput,
@@ -29,4 +30,5 @@ export {
   ProfileCard,
   ProfileEditModal,
   FollowButton,
+  Layout,
 };

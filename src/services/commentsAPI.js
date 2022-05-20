@@ -1,5 +1,6 @@
 import axios from "axios";
 import { updateComments } from "../redux";
+import { toast } from "react-toastify";
 
 const getPostComments = async (postId, dispatcher) => {
   try {
@@ -31,6 +32,7 @@ const addCommentToPost = async (postId, commentData, token, dispatcher) => {
     dispatcher(updateComments(response.data.comments));
     return "SUCCESS";
   } catch (error) {
+    toast.error("The servers didn't vibe with your comment, try later!");
     console.log(error);
   }
 };
@@ -54,6 +56,7 @@ const editComment = async (
     return "SUCCESS";
   } catch (error) {
     console.log(error);
+    toast.error("This is odd, can't edit the comment :/");
     return "FAILED";
   }
 };
@@ -66,14 +69,14 @@ const deleteComment = async (postId, commentId, token, dispatcher) => {
       url: `/api/comments/delete/${postId}/${commentId}`,
       headers: { authorization: token },
     });
-
     dispatcher(updateComments(response.data.comments));
   } catch (error) {
+    toast.error("This comment should've been deleted by now :/");
     console.log(error);
   }
 };
 
-//This API adds an upvote to a comment of a particular post.
+//This API adds an likes a comment of a particular post.
 const likeComment = async (postId, commentId, token, dispatcher) => {
   try {
     const response = await axios({
@@ -83,11 +86,12 @@ const likeComment = async (postId, commentId, token, dispatcher) => {
     });
     dispatcher(updateComments(response.data.comments));
   } catch (error) {
+    toast.error("Couldn't make your love reach them, try later!");
     console.log(error);
   }
 };
 
-//This API adds a downvote to a comment of a particular post.
+//This API adds a dislikes a comment of a particular post.
 const dislikeComment = async (postId, commentId, token, dispatcher) => {
   try {
     const response = await axios({
@@ -97,6 +101,7 @@ const dislikeComment = async (postId, commentId, token, dispatcher) => {
     });
     dispatcher(updateComments(response.data.comments));
   } catch (error) {
+    toast.error("Couldn't remove like, try later!");
     console.log(error);
   }
 };
