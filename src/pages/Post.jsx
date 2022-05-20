@@ -62,9 +62,7 @@ function Post() {
           <Feed
             posts={comments}
             type="COMMENT"
-            finishText={
-              comments.length === 0 ? "No Comments" : "No more comments"
-            }
+            finishText={comments.length === 0 ? "No Comments" : ""}
           />
         </>
       )}
