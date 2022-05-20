@@ -1,7 +1,7 @@
 import reactDom from "react-dom";
-import { useReducer } from "react";
+import { useReducer, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { MdOutlineFileUpload, GrClose } from "../Utils/icons";
+import { MdOutlineFileUpload, GrClose, BiLoaderAlt } from "../Utils/icons";
 import { editModalReducer } from "../Utils/helpers";
 import { TextInput } from ".";
 import { editUserDetails } from "../services/usersAPI";
@@ -16,6 +16,7 @@ function ProfileEditModal({ showState }) {
   const { showEditModal, setShowEditModal } = showState;
   const authUser = useSelector((state) => state.user);
   const token = useSelector((state) => state.auth.token);
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
 
   const [editState, editDispatch] = useReducer(editModalReducer, {
@@ -39,11 +40,13 @@ function ProfileEditModal({ showState }) {
   };
 
   const saveChangesHandler = async () => {
+    setLoading(true);
     const status = await editUserDetails(
       { ...authUser, ...editState },
       token,
       dispatch
     );
+    setLoading(false);
     status === "SUCCESS" && setShowEditModal(false);
   };
   return reactDom.createPortal(
@@ -64,7 +67,7 @@ function ProfileEditModal({ showState }) {
                 className="border border-slate-200 rounded-full object-cover"
               />
             </span>
-            <label className="bg-blue-500 w-max p-1.5 text-white flex flex-row gap-1 items-center text-sm rounded-md">
+            <label className="bg-blue-500 w-max p-1.5 cursor-pointer sm:hover:ease-linear hover:bg-blue-600 sm:duration-100 text-white flex flex-row gap-1 items-center text-sm rounded-md">
               <input
                 type="file"
                 accept=".png, .jpg, .jpeg"
@@ -110,7 +113,7 @@ function ProfileEditModal({ showState }) {
           className="p-1.5 flex font-robotoFlex justify-center self-center font-normal w-11/12 md:text-lg mt-1 rounded-md mx-1 bg-blue-500 text-white hover:bg-blue-600"
           onClick={saveChangesHandler}
         >
-          Save
+          {loading ? <BiLoaderAlt className="animate-spin text-lg" /> : "Save"}
         </button>
         <GrClose
           onClick={() => setShowEditModal(false)}

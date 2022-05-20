@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useToggle } from "../hooks";
 import { BiImage, MdGif, FaRegLaughBeam, RiLoaderFill } from "../Utils/icons";
+import { toast } from "react-toastify";
 
 function NewPost({
   text = "Post",
@@ -20,7 +21,7 @@ function NewPost({
 
   const callbackExecutionHandler = async () => {
     if (contentText.trim().length === 0) {
-      alert("We got nothing! Can't work with nothing!");
+      toast.warn("We got nothing! Can't work with nothing!");
       return;
     }
     setSaving(true);
@@ -58,12 +59,21 @@ function NewPost({
         ></textarea>
         <div className="flex justify-between items-center">
           <span className="flex items-center gap-2 text-xl text-white">
-            <BiImage className="cursor-pointer" />
-            <MdGif className="cursor-pointer text-3xl" />
-            <FaRegLaughBeam className="cursor-pointer text-lg" />
+            <BiImage
+              className="cursor-pointer"
+              onClick={() => toast.info("Feature yet to be implemented!")}
+            />
+            <MdGif
+              className="cursor-pointer text-3xl"
+              onClick={() => toast.info("Feature yet to be implemented!")}
+            />
+            <FaRegLaughBeam
+              className="cursor-pointer text-lg"
+              onClick={() => toast.info("Feature yet to be implemented!")}
+            />
           </span>
           <button
-            className="basis-20 text-sm sm:text-base bg-blue-500 flex justify-center text-white p-1.5 px-2 font-robotoFlex rounded-r-2xl rounded-l-2xl"
+            className="basis-20 text-sm sm:text-base bg-blue-500 hover:bg-blue-600 sm:ease-linear sm:duration-100 flex justify-center text-white p-1.5 px-2 font-robotoFlex rounded-r-2xl rounded-l-2xl"
             onClick={callbackExecutionHandler}
           >
             {saving ? <RiLoaderFill className="text-xl animate-spin" /> : text}

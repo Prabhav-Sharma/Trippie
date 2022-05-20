@@ -25,7 +25,7 @@ function UserProfile() {
     <>
       <ProfileCard user={authUser} postCount={posts.length} />
       <NewContent callback={addPostHandler} />
-      <Feed posts={posts} finishText="" />
+      <Feed posts={posts} />
     </>
   );
 }

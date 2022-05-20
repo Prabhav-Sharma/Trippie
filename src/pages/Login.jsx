@@ -5,6 +5,7 @@ import { login } from "../services";
 import { useDispatch } from "react-redux";
 import { USERNAME_ACTION, PASSWORD_ACTION } from "../Utils/constants";
 import { RiLoaderFill } from "../Utils/icons";
+import { toast } from "react-toastify";
 
 function Login() {
   useDocumentTitle("Login");
@@ -23,7 +24,7 @@ function Login() {
   const loginHandler = async (e) => {
     e.preventDefault();
     if (password.length === 0 || username.length === 0) {
-      alert("Fields can't be empty");
+      toast.warn("Fields can't be empty");
       return;
     }
 

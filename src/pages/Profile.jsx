@@ -32,7 +32,7 @@ function Profile() {
       {Object.keys(user).length !== 0 && (
         <ProfileCard user={user} postCount={posts.length} />
       )}
-      <Feed posts={posts} finishText="" />
+      <Feed posts={posts} />
       <Link
         to="/home"
         className="absolute top-1 left-1 flex items-center gap-1 text-white"

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { updatePosts, updateCurrentPost } from "../redux";
+import { toast } from "react-toastify";
 
 const fetchPosts = async (dispatcher) => {
   try {
@@ -44,6 +45,7 @@ const addPost = async (post, token, dispatcher) => {
     return "SUCCESS";
   } catch (error) {
     console.log(error);
+    toast.error("I'm sorry, couldn't share this thought at the moment");
     return "FAILED";
   }
 };
@@ -60,6 +62,7 @@ const deletePost = async (postId, token, dispatcher) => {
     dispatcher(updatePosts(response.data.posts));
   } catch (error) {
     console.log(error);
+    toast.error("Couldn't delete, try again!");
   }
 };
 
@@ -76,6 +79,7 @@ const editPost = async (postId, postData, token, dispatcher) => {
     return "SUCCESS";
   } catch (error) {
     console.log(error);
+    toast.error("this post is as stubborn as they come!");
     return "FAILED";
   }
 };

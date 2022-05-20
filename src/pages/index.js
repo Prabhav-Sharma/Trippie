@@ -7,6 +7,8 @@ import Edit from "./Edit";
 import Bookmarks from "./Bookmarks";
 import UserProfile from "./UserProfile";
 import Profile from "./Profile";
+import Explore from "./Explore";
+import Alerts from "./Alerts";
 export {
   MockAPI,
   Login,
@@ -17,4 +19,6 @@ export {
   Bookmarks,
   UserProfile,
   Profile,
+  Explore,
+  Alerts,
 };

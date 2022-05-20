@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import Layout from "../components/Layout";
+import { Layout } from "../components";
 import {
   Login,
   MockAPI,
@@ -10,15 +10,20 @@ import {
   Bookmarks,
   UserProfile,
   Profile,
+  Explore,
+  Alerts,
 } from "../pages";
 import ProtectedRoute from "./ProtectedRoute";
+import GuestRoutes from "./GuestRoutes";
 
 function Router() {
   return (
     <Routes>
       <Route path="mockman" element={<MockAPI />} />
-      <Route path="login" element={<Login />} />
-      <Route path="" element={<Signup />} />
+      <Route element={<GuestRoutes />}>
+        <Route path="login" element={<Login />} />
+        <Route path="/" element={<Signup />} />
+      </Route>
 
       <Route element={<ProtectedRoute />}>
         <Route
@@ -70,6 +75,23 @@ function Router() {
           element={
             <Layout>
               <Profile />
+            </Layout>
+          }
+        />
+        <Route
+          path="explore"
+          element={
+            <Layout>
+              <Explore />
+            </Layout>
+          }
+        />
+
+        <Route
+          path="alerts"
+          element={
+            <Layout>
+              <Alerts />
             </Layout>
           }
         />

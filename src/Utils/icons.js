@@ -18,6 +18,7 @@ import { FaRegLaughBeam, FaTrash, FaEdit } from "react-icons/fa";
 import { BiImage, BiComment, BiLoaderAlt } from "react-icons/bi";
 import { FiShare } from "react-icons/fi";
 import { GrClose } from "react-icons/gr";
+import { IoMdFunnel } from "react-icons/io";
 
 export {
   AiOutlineEye,
@@ -43,4 +44,5 @@ export {
   FaEdit,
   MdOutlineFileUpload,
   GrClose,
+  IoMdFunnel,
 };

@@ -4,6 +4,7 @@ import Router from "./router/Router";
 import { TopBar } from "./components";
 import { fetchAuthUserDetails } from "./services";
 import { useSelector, useDispatch } from "react-redux";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   const token = useSelector((state) => state.auth.token);
@@ -16,6 +17,7 @@ function App() {
   return (
     <div className="App">
       <TopBar />
+      <ToastContainer theme="dark" autoClose={750} limit="2" />
       <Router />
     </div>
   );

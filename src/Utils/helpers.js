@@ -1,5 +1,5 @@
-import { EMAIL_REGEX } from "./constants";
 import {
+  EMAIL_REGEX,
   EMAIL_ACTION,
   USERNAME_ACTION,
   PASSWORD_ACTION,
@@ -9,6 +9,8 @@ import {
   ABOUT_ACTION,
   PORTFOLIO_ACTION,
 } from "./constants";
+
+import { toast } from "react-toastify";
 
 const authFormReducer = (state, action) => {
   switch (action.type) {
@@ -36,7 +38,7 @@ const validateSignupFields = (
 ) => {
   console.log(email);
   if (!EMAIL_REGEX.test(email)) {
-    alert("Invalid email address");
+    toast.warn("Invalid email address");
     return false;
   }
 
@@ -45,12 +47,12 @@ const validateSignupFields = (
     fullName.trim().length === 0 ||
     username.trim().length === 0
   ) {
-    alert("Fields can't be empty");
+    toast.warn("Fields can't be empty");
     return false;
   }
 
   if (password !== confirmPassword) {
-    alert("Passwords don't match");
+    toast.warn("Passwords don't match");
     return false;
   }
   return true;
@@ -68,13 +70,33 @@ const searchForUsers = (users, search) => {
     .slice(0, 3);
 };
 
-const getLatestFeed = (posts, pageNumber) => {
-  return [...posts]
-    .sort(
-      (a, b) =>
-        new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-    )
-    .slice(0, pageNumber * 5);
+const getSortedFeed = (posts, pageNumber, sortBy) => {
+  let feed = [...posts];
+  switch (sortBy.toUpperCase()) {
+    case "LATEST":
+      return feed
+        .sort(
+          (a, b) =>
+            new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+        )
+        .slice(0, pageNumber * 5);
+
+    case "OLDEST":
+      return feed
+        .sort(
+          (a, b) =>
+            new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
+        )
+        .slice(0, pageNumber * 5);
+
+    case "TRENDING":
+      return feed
+        .sort((a, b) => b.likes.likeCount - a.likes.likeCount)
+        .slice(0, pageNumber * 5);
+
+    default:
+      return feed.slice(0, pageNumber * 5);
+  }
 };
 
 const unitFormatter = (number) => {
@@ -104,7 +126,7 @@ const editModalReducer = (state, action) => {
 export {
   validateSignupFields,
   searchForUsers,
-  getLatestFeed,
+  getSortedFeed,
   unitFormatter,
   urlSchemeRemover,
   editModalReducer,
