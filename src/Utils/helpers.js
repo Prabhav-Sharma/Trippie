@@ -36,7 +36,6 @@ const validateSignupFields = (
   confirmPassword,
   email
 ) => {
-  console.log(email);
   if (!EMAIL_REGEX.test(email)) {
     toast.warn("Invalid email address");
     return false;

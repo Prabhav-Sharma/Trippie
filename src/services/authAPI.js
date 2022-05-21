@@ -15,7 +15,8 @@ const signup = async (requestBody, dispatcher) => {
     return "SUCCESS";
   } catch (e) {
     console.log(e);
-    toast.error("Something's not right, I can feel it!");
+    if (e.response.status === 422) toast.error("Username already taken!");
+    else toast.error("Something's not right, I can feel it!");
     return "FAILED";
   }
 };
@@ -34,7 +35,8 @@ const login = async (requestBody, dispatcher) => {
     return "SUCCESS";
   } catch (e) {
     console.error(e);
-    toast.error("Something's not right, I can feel it!");
+    if (e.response.status === 404) toast.error("User not found!");
+    else toast.error("Something's not right, I can feel it!");
     return "FAILED";
   }
 };
@@ -49,7 +51,7 @@ const fetchAuthUserDetails = async (token, dispatcher) => {
     dispatcher(addUser(response.data.user));
   } catch (e) {
     console.log(e);
-    toast.info("You need to login!");
+    token && toast.info("You need to login!");
     dispatcher(logout());
   }
 };
