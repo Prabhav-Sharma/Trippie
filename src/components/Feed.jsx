@@ -45,9 +45,9 @@ function Feed({ posts, type = "POST", finishText = "" }) {
   return (
     <div className="w-full flex flex-col gap-4 mt-4 mb-14 sm:mb-0">
       {feed.length !== 0 && (
-        <div className="flex flex-col relative gap-1.5 items-center self-end mr-2 p-1 rounded-md font-normal text-blue-600 bg-white">
+        <div className="flex flex-col relative gap-1.5 items-center text-sm sm:text-base self-end mr-2 p-1 rounded-md font-normal text-blue-600 bg-white">
           <span
-            className="flex w-36 justify-center items-center gap-1 px-1.5 cursor-pointer"
+            className="flex w-32 sm:w-36 justify-center items-center gap-1 px-1.5 cursor-pointer"
             onClick={() => setSortByToggle((toggle) => !toggle)}
           >
             <IoMdFunnel /> Sort: {sortBy}

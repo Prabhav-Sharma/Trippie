@@ -13,7 +13,6 @@ const addPostToBookmarks = async (postId, token, dispatcher) => {
     dispatcher(updateBookmarks(response.data.bookmarks));
   } catch (error) {
     toast.error("Couldn't bookmark, try later!");
-    console.log(error);
   }
 };
 
@@ -27,8 +26,7 @@ const removePostFromBookmarks = async (postId, token, dispatcher) => {
     });
     dispatcher(updateBookmarks(response.data.bookmarks));
   } catch (error) {
-    toast.error("The servers wants to keep this one here for now!");
-    console.log(error);
+    toast.error("Unable to remove bookmark");
   }
 };
 
@@ -42,7 +40,7 @@ const fetchBookmarks = async (token, dispatcher) => {
     });
     dispatcher(updateBookmarks(response.data.bookmarks));
   } catch (error) {
-    console.log(error);
+    toast.info("Unable to fetch bookmarks :/");
   }
 };
 

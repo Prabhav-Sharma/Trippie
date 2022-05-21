@@ -7,7 +7,7 @@ const fetchUsers = async (dispatcher) => {
     const response = await axios.get("/api/users");
     dispatcher(updateUsers(response.data.users));
   } catch (error) {
-    console.log(error);
+    toast.info("Can't fetch users");
   }
 };
 
@@ -31,8 +31,7 @@ const editUserDetails = async (userData, token, dispatcher) => {
     dispatcher(addUser(response.data.user));
     return "SUCCESS";
   } catch (e) {
-    console.log(e);
-    toast.error("Facing just a little bit of an issue");
+    toast.error("I'm sorry, couldn't save changes:'(");
     return "FAILED";
   }
 };
@@ -45,7 +44,6 @@ const followUser = async (followUserId, token, dispatcher) => {
     });
     dispatcher(updateFollowing(response.data.following));
   } catch (error) {
-    console.log(error);
     toast.error("Facing just a little bit of an issue!");
   }
 };
@@ -60,8 +58,7 @@ const unfollowUser = async (followUserId, token, dispatcher) => {
     });
     dispatcher(updateFollowing(response.data.following));
   } catch (error) {
-    console.log(error);
-    toast.error("Dave, our server, isn't that great!");
+    toast.error("Dave, our server guy, isn't that great!");
   }
 };
 
