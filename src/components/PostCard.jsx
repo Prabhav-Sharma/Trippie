@@ -12,6 +12,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useToggle } from "../hooks";
 import { deletePost } from "../services";
+import { toast } from "react-toastify";
 
 function PostCard({ post, location = "HOME" }) {
   const authUsername = useSelector((state) => state.user.username);
@@ -80,7 +81,10 @@ function PostCard({ post, location = "HOME" }) {
             />
             <p className="text-sm">{unitFormatter(comments.length)}</p>
           </span>
-          <FiShare className="text-xl hover:text-sky-500 hover:md:scale-110 cursor-pointer" />
+          <FiShare
+            className="text-xl hover:text-sky-500 hover:md:scale-110 cursor-pointer"
+            onClick={() => toast.info("Feature yet to be implemented!")}
+          />
           <BookmarkButton postId={_id} />
         </div>
       </div>

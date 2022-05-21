@@ -7,7 +7,7 @@ const fetchPosts = async (dispatcher) => {
     const response = await axios.get("/api/posts");
     dispatcher(updatePosts(response.data.posts));
   } catch (error) {
-    console.log(error);
+    toast.info("Unable to fetch posts :(");
   }
 };
 
@@ -18,7 +18,7 @@ const fetchPostById = async (postId, dispatcher, updateCurrent = true) => {
     updateCurrent && dispatcher(updateCurrentPost(response.data.post)); //Updates the currentPost value in the appData store stata
     return response.data.post;
   } catch (error) {
-    console.log(error);
+    toast.info("Unable to fetch post :(");
   }
 };
 
@@ -28,7 +28,7 @@ const fetchAllUserPosts = async (username, dispatcher) => {
     const response = await axios.get(`/api/posts/user/${username}`);
     dispatcher(response.data.posts);
   } catch (error) {
-    console.log(error);
+    toast.info("Unable to fetch this user's posts :(");
   }
 };
 
@@ -44,7 +44,6 @@ const addPost = async (post, token, dispatcher) => {
     dispatcher(updatePosts(response.data.posts));
     return "SUCCESS";
   } catch (error) {
-    console.log(error);
     toast.error("I'm sorry, couldn't share this thought at the moment");
     return "FAILED";
   }
@@ -58,10 +57,8 @@ const deletePost = async (postId, token, dispatcher) => {
       url: `/api/posts/${postId}`,
       headers: { authorization: token },
     });
-
     dispatcher(updatePosts(response.data.posts));
   } catch (error) {
-    console.log(error);
     toast.error("Couldn't delete, try again!");
   }
 };
@@ -78,7 +75,6 @@ const editPost = async (postId, postData, token, dispatcher) => {
     dispatcher(updatePosts(response.data.posts));
     return "SUCCESS";
   } catch (error) {
-    console.log(error);
     toast.error("this post is as stubborn as they come!");
     return "FAILED";
   }
@@ -109,7 +105,7 @@ const dislikePost = async (postId, token, dispatcher, updatePost = false) => {
     dispatcher(updatePosts(response.data.posts));
     updatePost && dispatcher(updateCurrentPost(response.data.post));
   } catch (error) {
-    console.log(error);
+    toast.error("can't unlike the post. Maybe? Reconsider?");
   }
 };
 

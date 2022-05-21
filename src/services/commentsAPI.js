@@ -7,7 +7,7 @@ const getPostComments = async (postId, dispatcher) => {
     const response = await axios.get(`/api/comments/${postId}`);
     dispatcher(updateComments(response.data.comments));
   } catch (error) {
-    console.log(error);
+    toast.info("Unable to comments for this post");
   }
 };
 
@@ -17,6 +17,7 @@ const getCommentById = async (postId, commentId) => {
     return response.data.comment;
   } catch (error) {
     console.log(error);
+    toast.info("Failed to fetch comment");
   }
 };
 
@@ -32,8 +33,7 @@ const addCommentToPost = async (postId, commentData, token, dispatcher) => {
     dispatcher(updateComments(response.data.comments));
     return "SUCCESS";
   } catch (error) {
-    toast.error("The servers didn't vibe with your comment, try later!");
-    console.log(error);
+    toast.error("Couldn't add comment :/");
   }
 };
 
@@ -55,8 +55,7 @@ const editComment = async (
     dispatcher(updateComments(response.data.comments));
     return "SUCCESS";
   } catch (error) {
-    console.log(error);
-    toast.error("This is odd, can't edit the comment :/");
+    toast.error("We can't edit the comment right now :/");
     return "FAILED";
   }
 };
@@ -72,7 +71,6 @@ const deleteComment = async (postId, commentId, token, dispatcher) => {
     dispatcher(updateComments(response.data.comments));
   } catch (error) {
     toast.error("This comment should've been deleted by now :/");
-    console.log(error);
   }
 };
 
@@ -87,7 +85,6 @@ const likeComment = async (postId, commentId, token, dispatcher) => {
     dispatcher(updateComments(response.data.comments));
   } catch (error) {
     toast.error("Couldn't make your love reach them, try later!");
-    console.log(error);
   }
 };
 
@@ -102,7 +99,6 @@ const dislikeComment = async (postId, commentId, token, dispatcher) => {
     dispatcher(updateComments(response.data.comments));
   } catch (error) {
     toast.error("Couldn't remove like, try later!");
-    console.log(error);
   }
 };
 
