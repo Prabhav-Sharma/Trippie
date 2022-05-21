@@ -3,6 +3,9 @@ A social media platform built using ReactJS
 
 The platform enables you to connect with people, follow/unfollow them, create new posts, add comments, add posts to bookmarks, edit profile and edit posts/comments.
 
+## Screens
+![chrome-capture-2022-4-21](https://user-images.githubusercontent.com/88072012/169647382-f3311ae0-4b3d-40f2-8efe-a76ec85b5a14.gif)
+
 ## State Management
 - Global state has been managed using redux toolkit library
 
@@ -55,5 +58,3 @@ The platform enables you to connect with people, follow/unfollow them, create ne
 - The components allows the user to search for other users across all present on the platform.
 - It checks both the username and the full name of all the users.
 
-## Screens
-![chrome-capture-2022-4-21](https://user-images.githubusercontent.com/88072012/169647382-f3311ae0-4b3d-40f2-8efe-a76ec85b5a14.gif)
