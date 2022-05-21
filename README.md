@@ -1,70 +1,59 @@
-# Getting Started with Create React App
+# [Trippie](https://trippies.netlify.app/)
+A social media platform built using ReactJS
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The platform enables you to connect with people, follow/unfollow them, create new posts, add comments, add posts to bookmarks, edit profile and edit posts/comments.
 
-## Available Scripts
+## State Management
+- Global state has been managed using redux toolkit library
 
-In the project directory, you can run:
+## Features
+### Authentication 
+- Authentication allows the user to login/signup into the app to unlock personalized features.
+- Redirects user to login page, if an attempt is made to navigate to protected pages which require the user to be authenticated
+- Authentication is achieved by using an encoded token so as to not publicize user data.
 
-### `yarn start`
+### Home
+- The user like, bookmarks and comment on posts. They can view all the posts of the users they're following and their own posts.
+- The user can add new posts as well.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Bookmarks
+- All the posts that the user has bookmarks will be easily accessible from here.
+- The user can perform all post operations on the bookmarks post from here here as well.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Explore
+- The user can view all the posts including the ones from users, they're not following. 
 
-### `yarn test`
+### Posts
+- The posts allow few simple operations on them such as like, comments, and bookmark
+- The users can also navigate to the profile page of the author of the post by clicking on the profile image, or username.
+- On clicking the post, the user is taken to the post page, where they can perform post operations, and add comments.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Profile Page
+- The profile page lists the information of the user such as their full name, username, profile image, about section, portfolio link, and stats such as following, follewers and total posts
+- All the posts of the user can be seen from here and post operations can also be performed
+- The user can also be followed/unfollowed from here.
 
-### `yarn build`
+### My Profile Page
+- Similar to the profile page above, here the data is shown of the currently logged in user
+- Instead of a follow button, this page has an edit button that allow the user to edit their details such as profile image, full name, about section and portfolio URL.
+- All of the posts of the current user are shown.
+- The user can also, add new posts.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Edit
+- The user is redirected to the edit page whenever they need to edit their post or comment. It uses the same component used for adding the comment or post in the first place.
+- They can save the changes to the post/comment by clicking on the edit button.
+- Once, the changes are updated their are redirected back to the place where they initiated the edit operation.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Key Components
+### Feed
+- The feed components renders a list of all posts/comments that are passed to it. 
+- It adds an observer on the loading... tag to load more posts when the user scrolls near it. The idea of an infinite scroll and paginated data. On initial render only a few posts are loaded from the backend so as to reduce fetching time and optimize performance, if the user scrolls, new posts are fetched and added to the UI.
+- Currently, the data is not paginated as mockbee backend returned all posts at once but the app simulates the experience nonetheless
+- Sort By: The feed can be sorted in 3 ways, latest, oldest and trending 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Search
+- The components allows the user to search for other users across all present on the platform.
+- It checks both the username and the full name of all the users.
 
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Screens
+![chrome-capture-2022-4-21](https://user-images.githubusercontent.com/88072012/169647382-f3311ae0-4b3d-40f2-8efe-a76ec85b5a14.gif)
