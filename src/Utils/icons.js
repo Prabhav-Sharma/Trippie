@@ -4,6 +4,7 @@ import {
   AiOutlineHeart,
   AiFillHeart,
   AiFillHome,
+  AiOutlineSearch,
 } from "react-icons/ai";
 import { RiLoaderFill } from "react-icons/ri";
 import { GiShipWheel, GiPlagueDoctorProfile } from "react-icons/gi";
@@ -13,7 +14,7 @@ import {
   BsFillBookmarkCheckFill,
   BsThreeDotsVertical,
 } from "react-icons/bs";
-import { MdGif, MdLogout, MdOutlineFileUpload } from "react-icons/md";
+import { MdLogout, MdOutlineFileUpload } from "react-icons/md";
 import { FaRegLaughBeam, FaTrash, FaEdit } from "react-icons/fa";
 import { BiImage, BiComment, BiLoaderAlt } from "react-icons/bi";
 import { FiShare } from "react-icons/fi";
@@ -30,7 +31,6 @@ export {
   GiPlagueDoctorProfile,
   BsBookmark,
   BiImage,
-  MdGif,
   FaRegLaughBeam,
   AiOutlineHeart,
   AiFillHeart,
@@ -45,4 +45,5 @@ export {
   MdOutlineFileUpload,
   GrClose,
   IoMdFunnel,
+  AiOutlineSearch,
 };
