@@ -8,30 +8,18 @@ import { formatDate } from "../utils/authUtils";
 export const users = [
   {
     _id: "a81caa3a-a643-4841-85ee-79272b22a4a0",
-    fullName: "Adarsh Balika",
-    username: "adarshbalika",
-    password: "adarshBalika123",
-    email: "adarshBalika@gmail.com",
+    fullName: "Sherlock Holmes",
+    username: "Iamsherlocked",
+    password: "sherlock123",
+    email: "sherlock@gmail.com",
     createdAt: formatDate(),
     updatedAt: formatDate(),
-    portfolio: "https://github.com/Prabhav-Sharma?tab=repositories",
-    about: "I am the most ideal student!",
+    portfolio: "https://www.arthurconandoyle.com/sherlockholmes.html",
+    about: "The Name Is Sherlock Holmes, and the Address Is 221B Baker Street.",
     profileImg:
-      "https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg",
+      "https://res.cloudinary.com/carsmart/image/upload/v1653580579/Trippie/sherlock_ckpxxl.jpg",
   },
-  {
-    _id: "2e5d35ca-e3d3-4b4a-922a-a56d030a900e",
-    fullName: "Guest",
-    username: "guest",
-    password: "guest@123",
-    email: "guest@gmail.com",
-    createdAt: formatDate(),
-    updatedAt: formatDate(),
-    portfolio: "https://github.com/Prabhav-Sharma?tab=repositories",
-    about: "I'm a guest here, woof woof xD",
-    profileImg:
-      "https://camo.githubusercontent.com/e6f31db76aa258d4e26be8464f2dff9796d5cf59185976df02dd80ae6a60cc9e/68747470733a2f2f63646e2e776f726c64766563746f726c6f676f2e636f6d2f6c6f676f732f7075672e737667",
-  },
+
   {
     _id: "dfb7a1e0-cd02-489d-ab70-7e40b49441cc",
     fullName: "Prabhav Sharma",
@@ -99,5 +87,32 @@ export const users = [
     about:
       "Founder @invactHQ | x @Microsoft | Fixing education | Mentored 100+ students to first tech job | Tweets: Tech, Education, Career, Metaverse and Startups.",
     profileImg: "https://avatars.githubusercontent.com/u/10216863?v=4",
+  },
+  {
+    _id: "1775f4c1-635b-4f9d-bebb-77748441633f",
+    fullName: "🦋",
+    username: "roarofthefiire",
+    password: "trial@123",
+    email: "pratty@neog.com",
+    createdAt: formatDate(),
+    updatedAt: formatDate(),
+    portfolio: "https://twitter.com/roarofthefiire",
+    about:
+      "if the stars were edible,\n and our hearts were never full/\ncould we live with just a taste?",
+    profileImg:
+      "https://pbs.twimg.com/profile_images/1506667570900119552/oG9bEyO7_400x400.jpg",
+  },
+  {
+    _id: "2e5d35ca-e3d3-4b4a-922a-a56d030a900e",
+    fullName: "Guest",
+    username: "guest",
+    password: "guest@123",
+    email: "guest@gmail.com",
+    createdAt: formatDate(),
+    updatedAt: formatDate(),
+    portfolio: "https://github.com/Prabhav-Sharma?tab=repositories",
+    about: "I'm a guest here, woof woof xD",
+    profileImg:
+      "https://camo.githubusercontent.com/e6f31db76aa258d4e26be8464f2dff9796d5cf59185976df02dd80ae6a60cc9e/68747470733a2f2f63646e2e776f726c64766563746f726c6f676f2e636f6d2f6c6f676f732f7075672e737667",
   },
 ];
