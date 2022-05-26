@@ -4,7 +4,7 @@ import {
   GiPlagueDoctorProfile,
   BsFillBookmarkCheckFill,
   AiFillHome,
-  BsBellFill,
+  AiOutlineSearch,
 } from "../Utils/icons";
 
 function SideNav() {
@@ -21,7 +21,7 @@ function SideNav() {
         }
       >
         <AiFillHome />
-        <span className="hidden text-base lg:inline">Home</span>
+        <span className="hidden text-base lg:inline font-normal">Home</span>
       </NavLink>
       <NavLink
         to="/bookmarks"
@@ -30,7 +30,10 @@ function SideNav() {
         }
       >
         <BsFillBookmarkCheckFill className="text-lg" />
-        <span className="hidden text-base lg:inline"> Bookmarks</span>
+        <span className="hidden text-base lg:inline font-normal">
+          {" "}
+          Bookmarks
+        </span>
       </NavLink>
       <NavLink
         to="/explore"
@@ -39,16 +42,16 @@ function SideNav() {
         }
       >
         <GiShipWheel />
-        <span className="hidden text-base lg:inline">Explore</span>
+        <span className="hidden text-base lg:inline font-normal">Explore</span>
       </NavLink>
       <NavLink
-        to="/alerts"
+        to="/search"
         className={({ isActive }) =>
           `  ${isActive && activeStyles} ${tabStyles}`
         }
       >
-        <BsBellFill />
-        <span className="hidden text-base lg:inline"> Alerts</span>
+        <AiOutlineSearch />
+        <span className="hidden text-base lg:inline font-normal"> Search</span>
       </NavLink>
       <NavLink
         to="/profile"
@@ -57,7 +60,7 @@ function SideNav() {
         }
       >
         <GiPlagueDoctorProfile />
-        <span className="hidden text-base lg:inline">Profile</span>
+        <span className="hidden text-base lg:inline font-normal">Profile</span>
       </NavLink>
     </aside>
   );
