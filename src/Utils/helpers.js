@@ -36,6 +36,11 @@ const validateSignupFields = (
   confirmPassword,
   email
 ) => {
+  if (username.length < 4) {
+    toast.warn("Username must be more than 3 characters");
+    return false;
+  }
+
   if (!EMAIL_REGEX.test(email)) {
     toast.warn("Invalid email address");
     return false;
@@ -106,6 +111,8 @@ const unitFormatter = (number) => {
 
 const urlSchemeRemover = (url) => url.replace(/^http(s)?:\/\/(w{3}.)?/, "");
 
+const urlSchemeRegexMatcher = (url) => /^http(s)?:\/\//.test(url);
+
 const editModalReducer = (state, action) => {
   switch (action.type) {
     case FULL_NAME_ACTION:
@@ -122,6 +129,38 @@ const editModalReducer = (state, action) => {
   }
 };
 
+const queryUsers = (users, query) => {
+  if (query.trim().length === 0) return [];
+
+  return users
+    .filter(
+      (user) =>
+        user.username.toLowerCase().includes(query.toLowerCase()) ||
+        user.fullName.toLowerCase().includes(query.toLowerCase())
+    )
+    .slice(0, 3);
+};
+
+const queryPosts = (posts, query) => {
+  if (query.trim().length === 0) return [];
+
+  return posts.filter((post) =>
+    post.text.toLowerCase().includes(query.toLowerCase())
+  );
+};
+
+const debounce = (func) => {
+  let timer;
+  return function (...args) {
+    let context = this;
+    if (timer) clearTimeout(timer);
+    timer = setTimeout(() => {
+      timer = undefined;
+      func.apply(context, args);
+    }, 500);
+  };
+};
+
 export {
   validateSignupFields,
   searchForUsers,
@@ -130,4 +169,8 @@ export {
   urlSchemeRemover,
   editModalReducer,
   authFormReducer,
+  urlSchemeRegexMatcher,
+  queryPosts,
+  queryUsers,
+  debounce,
 };
