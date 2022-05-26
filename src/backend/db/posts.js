@@ -105,7 +105,7 @@ export const posts = [
     updatedAt: formatDate(),
     userId: "99132487-1567-4cc8-bbc2-7fc5b8ae675c",
     profileImg:
-      "https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg",
+      "https://media-exp1.licdn.com/dms/image/C4D03AQFeaYmPW8y2fQ/profile-displayphoto-shrink_400_400/0/1648568811994?e=1658966400&v=beta&t=Ug0XAb0J5GS_m-JOydwnv_DnKdkf6LACivlB3UlL8XI",
     image: "",
   },
   {

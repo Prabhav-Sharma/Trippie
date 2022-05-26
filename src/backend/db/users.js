@@ -46,7 +46,7 @@ export const users = [
     about:
       "A result-oriented professional with more than 5 years experience in Management,Data analysis & Insurance . Seeking assignments in management consulting and Strategic roles. ",
     profileImg:
-      "https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg",
+      "https://media-exp1.licdn.com/dms/image/C4D03AQFeaYmPW8y2fQ/profile-displayphoto-shrink_400_400/0/1648568811994?e=1658966400&v=beta&t=Ug0XAb0J5GS_m-JOydwnv_DnKdkf6LACivlB3UlL8XI",
   },
   {
     _id: "e91b1fbc-bb75-417d-bae9-f323a19a6c9",
@@ -60,7 +60,7 @@ export const users = [
     about:
       "I'm currently a Junior Research Fellow and visiting faculty in finance at the school of management and liberal studies of The Northcap University. ",
     profileImg:
-      "https://camo.githubusercontent.com/fbfcb9e3dc648adc93bef37c718db16c52f617ad055a26de6dc3c21865c3321d/68747470733a2f2f7777772e766563746f726c6f676f2e7a6f6e652f6c6f676f732f6769742d73636d2f6769742d73636d2d69636f6e2e737667",
+      "https://media-exp1.licdn.com/dms/image/C4D03AQHScfQxLQO0Nw/profile-displayphoto-shrink_400_400/0/1652718474670?e=1658966400&v=beta&t=8U_eVHJaf8WEHil819h6-wvnvL2XoLDtTFNz5m1hdoM",
   },
   {
     _id: "3e723f53-64de-4bc4-8011-5d7985dd0dd6",
