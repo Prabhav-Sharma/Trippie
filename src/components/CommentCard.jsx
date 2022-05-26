@@ -26,13 +26,14 @@ function CommentCard({ comment }) {
     profileImg,
     username,
     createdAt,
-    content,
+    text,
+    image,
     postId,
     likes: { likeCount, likedBy },
   } = comment;
 
   return (
-    <div className="flex flex-row bg-transparent border-y border-slate-500 gap-4 p-3 text-white">
+    <div className="flex flex-row bg-transparent border-y text-white gap-4 p-3 border-slate-500 ">
       <div className="profile-icon">
         <img className="rounded-full " src={profileImg} alt={username} />
       </div>
@@ -43,26 +44,33 @@ function CommentCard({ comment }) {
             {dayjs(new Date(createdAt)).format("ddd, DD MMM 'YY")}
           </h5>
         </span>
-        <p className="text-xs sm:text-sm md:text-base whitespace-pre-wrap">
-          {content}
-        </p>
+        <div className="text-xs flex flex-col sm:text-sm md:text-base gap-1.5 whitespace-pre-wrap">
+          <p>{text}</p>
+          {image && (
+            <img
+              className="max-w-full max-h-72 self-center"
+              src={image}
+              onError={(e) => (e.currentTarget.style.display = "none")}
+            />
+          )}
+          <span className="flex self-start items-center gap-1">
+            {likedBy.some((user) => user.username === authUsername) ? (
+              <AiFillHeart
+                className="text-xl text-sky-500 hover:md:scale-110 cursor-pointer"
+                onClick={() => dislikeComment(postId, _id, token, dispatch)}
+              />
+            ) : (
+              <AiOutlineHeart
+                className="text-xl hover:cursor-pointer hover:md:scale-110"
+                onClick={() => likeComment(postId, _id, token, dispatch)}
+              />
+            )}
+            <p className="text-sm">{unitFormatter(likeCount)}</p>
+          </span>
+        </div>
       </div>
-      <span className="flex self-center items-center gap-1">
-        {likedBy.some((user) => user.username === authUsername) ? (
-          <AiFillHeart
-            className="text-xl text-sky-500 hover:md:scale-110 cursor-pointer"
-            onClick={() => dislikeComment(postId, _id, token, dispatch)}
-          />
-        ) : (
-          <AiOutlineHeart
-            className="text-xl hover:cursor-pointer hover:md:scale-110"
-            onClick={() => likeComment(postId, _id, token, dispatch)}
-          />
-        )}
-        <p className="text-sm">{unitFormatter(likeCount)}</p>
-      </span>
       {authUsername === username && (
-        <span className="relative self-center">
+        <span className="relative self-start">
           <BsThreeDotsVertical
             className={`${
               optionsToggle && "bg-slate-700"
