@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { TextInput } from "../components";
 import { useDocumentTitle, useAuthForm, useToggle } from "../hooks";
 import { login } from "../services";
@@ -13,6 +13,9 @@ function Login() {
     authFormState: { username, password },
     authFormDispatch,
   } = useAuthForm();
+
+  const location = useLocation();
+  console.log(location?.state?.from?.pathname);
 
   const dispatch = useDispatch();
 
@@ -31,7 +34,8 @@ function Login() {
     setLoginLoading(true);
     const status = await login({ username, password }, dispatch);
     setLoginLoading(false);
-    status === "SUCCESS" && navigate("/home");
+    status === "SUCCESS" &&
+      navigate(location?.state?.from?.pathname || "/home");
   };
 
   const loginWithTestCredentials = async (e) => {
@@ -42,7 +46,8 @@ function Login() {
       dispatch
     );
     setTestLoading(false);
-    status === "SUCCESS" && navigate("/home");
+    status === "SUCCESS" &&
+      navigate(location?.state?.from?.pathname || "/home");
   };
 
   return (
@@ -109,6 +114,7 @@ function Login() {
           </button>
           <Link
             to="/"
+            state={{ from: location?.state?.from }}
             className="font-robotoFlex md:text-lg font-normal text-slate-700 self-center"
           >
             Create New Account ❯

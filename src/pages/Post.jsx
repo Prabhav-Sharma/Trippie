@@ -24,20 +24,15 @@ function Post() {
     })();
   }, [postId]);
 
-  const addCommentHandler = async (text) => {
-    return await addCommentToPost(
-      postId,
-      { content: text.trim() },
-      token,
-      dispatch
-    );
+  const addCommentHandler = async (content) => {
+    return await addCommentToPost(postId, content, token, dispatch);
   };
 
   return (
     <>
       <span className="flex items-center justify-start gap-5 w-full">
         <NavLink
-          to="/home"
+          to={location?.state?.from?.pathname || "/home"}
           className="text-white text-3xl lg:text-5xl w-max -translate-y-1.5 h-min ml-2"
         >
           ‹
