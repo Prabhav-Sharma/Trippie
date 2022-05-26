@@ -43,7 +43,7 @@ export const signupHandler = function (schema, request) {
       portfolio: "",
       bio: "",
       profileImg:
-        "https://res.cloudinary.com/carsmart/image/upload/v1652980579/Trippie/1-panda_ewbk0n.png",
+        "https://res.cloudinary.com/carsmart/image/upload/v1653567329/Trippie/fallback_uhzw7n.jpg",
     };
     const createdUser = schema.users.create(newUser);
     const encodedToken = sign(
