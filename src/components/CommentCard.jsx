@@ -33,7 +33,7 @@ function CommentCard({ comment }) {
   } = comment;
 
   return (
-    <div className="flex flex-row bg-transparent border-y text-white gap-4 p-3 border-slate-500 ">
+    <div className="flex flex-row bg-transparent border text-white gap-4 p-3 border-slate-500 ">
       <div className="profile-icon">
         <img className="rounded-full " src={profileImg} alt={username} />
       </div>

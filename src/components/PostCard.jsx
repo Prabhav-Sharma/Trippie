@@ -68,7 +68,7 @@ function PostCard({ post, location = "HOME" }) {
       <div className="flex flex-col grow gap-4">
         <span className="flex flex-row gap-3 items-baseline">
           <h4
-            className="font-openSans font-normal text-sm cursor-pointer"
+            className="font-openSans text-sm cursor-pointer font-semibold"
             onClick={navigateToUserProfile}
           >
             @{username}
@@ -81,11 +81,13 @@ function PostCard({ post, location = "HOME" }) {
         <div className="text-xs flex flex-col sm:text-sm md:text-base whitespace-pre-wrap">
           <p>{text}</p>
           {image && (
-            <img
-              className="max-w-full max-h-72 self-center"
-              src={image}
-              onError={(e) => (e.currentTarget.style.display = "none")}
-            />
+            <div className="max-w-xl">
+              <img
+                className="w-full max-h-80 lg:max-h-full my-1.5 object-cover"
+                src={image}
+                onError={(e) => (e.currentTarget.style.display = "none")}
+              />
+            </div>
           )}
         </div>
         <div
