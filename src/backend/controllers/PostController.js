@@ -112,7 +112,7 @@ export const createPostHandler = function (schema, request) {
  * body contains { postData }
  * */
 export const editPostHandler = function (schema, request) {
-  const user = requiresAuth.call(this, request);
+  let user = requiresAuth.call(this, request);
   try {
     if (!user) {
       return new Response(
@@ -128,17 +128,19 @@ export const editPostHandler = function (schema, request) {
     const postId = request.params.postId;
     const { postData } = JSON.parse(request.requestBody);
     let post = schema.posts.findBy({ _id: postId }).attrs;
-    if (post.username !== user.username) {
-      return new Response(
-        400,
-        {},
-        {
-          errors: ["Cannot edit a Post doesn't belong to the logged in User."],
-        }
-      );
-    }
     post = { ...post, ...postData };
     this.db.posts.update({ _id: postId }, post);
+    const bookmarkPostIndex = user.bookmarks.findIndex(
+      (bookmark) => bookmark._id === postId
+    );
+    let updatedBookmarks = [...user.bookmarks];
+    if (bookmarkPostIndex !== -1)
+      updatedBookmarks.splice(bookmarkPostIndex, 1, post);
+    user = { ...user, bookmarks: updatedBookmarks };
+    this.db.users.update(
+      { _id: user._id },
+      { ...user, updatedAt: formatDate() }
+    );
     return new Response(201, {}, { posts: this.db.posts });
   } catch (error) {
     return new Response(
@@ -231,7 +233,7 @@ export const dislikePostHandler = function (schema, request) {
  * send DELETE Request at /api/user/posts/:postId
  * */
 export const deletePostHandler = function (schema, request) {
-  const user = requiresAuth.call(this, request);
+  let user = requiresAuth.call(this, request);
   try {
     if (!user) {
       return new Response(
@@ -245,20 +247,20 @@ export const deletePostHandler = function (schema, request) {
       );
     }
     const postId = request.params.postId;
-    let post = schema.posts.findBy({ _id: postId }).attrs;
-    if (post.username !== user.username) {
-      return new Response(
-        400,
-        {},
-        {
-          errors: [
-            "Cannot delete a Post doesn't belong to the logged in User.",
-          ],
-        }
-      );
-    }
+    const filteredBookmarks = user.bookmarks.filter(
+      (currPost) => currPost._id !== postId
+    );
     this.db.posts.remove({ _id: postId });
-    return new Response(201, {}, { posts: this.db.posts });
+    user = { ...user, bookmarks: filteredBookmarks };
+    this.db.users.update(
+      { _id: user._id },
+      { ...user, updatedAt: formatDate() }
+    );
+    return new Response(
+      201,
+      {},
+      { posts: this.db.posts, bookmarks: filteredBookmarks }
+    );
   } catch (error) {
     return new Response(
       500,
