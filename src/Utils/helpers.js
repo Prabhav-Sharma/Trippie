@@ -62,18 +62,6 @@ const validateSignupFields = (
   return true;
 };
 
-const searchForUsers = (users, search) => {
-  if (search.trim().length === 0) return [];
-
-  return users
-    .filter(
-      (user) =>
-        user.username.toLowerCase().includes(search.toLowerCase()) ||
-        user.fullName.toLowerCase().includes(search.toLowerCase())
-    )
-    .slice(0, 3);
-};
-
 const getSortedFeed = (posts, pageNumber, sortBy) => {
   let feed = [...posts];
   switch (sortBy.toUpperCase()) {
@@ -163,7 +151,6 @@ const debounce = (func) => {
 
 export {
   validateSignupFields,
-  searchForUsers,
   getSortedFeed,
   unitFormatter,
   urlSchemeRemover,
