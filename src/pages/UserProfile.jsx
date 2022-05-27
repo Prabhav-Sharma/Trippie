@@ -17,8 +17,8 @@ function UserProfile() {
     fetchAllUserPosts(authUser.username, setPosts);
   }, [AllPosts]);
 
-  const addPostHandler = async (text) => {
-    return await addPost({ content: text.trim() }, token, dispatch);
+  const addPostHandler = async (content) => {
+    return await addPost(content, token, dispatch);
   };
 
   return (
