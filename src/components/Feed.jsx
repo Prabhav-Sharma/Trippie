@@ -43,7 +43,7 @@ function Feed({ posts, type = "POST", finishText = "" }) {
   };
 
   return (
-    <div className="w-full flex flex-col gap-4 mt-4 mb-14 sm:mb-0">
+    <div className="w-full flex flex-col mt-4 mb-14 sm:mb-0">
       {feed.length !== 0 && (
         <div className="flex flex-col relative gap-1.5 items-center text-sm sm:text-base self-end mr-2 p-1 rounded-md font-normal text-blue-600 bg-white">
           <span
@@ -78,8 +78,10 @@ function Feed({ posts, type = "POST", finishText = "" }) {
           </ul>
         </div>
       )}
-      <ContentFeed type={type} feed={feed} />
-      <span ref={loadingRef} className="text-white  self-center">
+      <div className="mt-2 w-full flex flex-col">
+        <ContentFeed type={type} feed={feed} />
+      </div>
+      <span ref={loadingRef} className="text-white self-center">
         {posts.length === feed.length ? (
           finishText
         ) : (
