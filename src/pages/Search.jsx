@@ -40,7 +40,7 @@ function Search() {
         <>
           <h3 className="text-white p-2 md:text-xl">Users</h3>
           {users.map((user) => (
-            <MiniUserCard user={user} />
+            <MiniUserCard key={user._id} user={user} />
           ))}
         </>
       )}
