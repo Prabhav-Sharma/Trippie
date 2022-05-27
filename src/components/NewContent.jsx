@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useToggle } from "../hooks";
-import { BiImage, FaRegLaughBeam, RiLoaderFill } from "../Utils/icons";
+import { BiImage, FaRegLaughBeam, RiLoaderFill, GrClose } from "../Utils/icons";
 import { FALLBACK_IMG } from "../Utils/constants";
 import { toast } from "react-toastify";
 import Picker from "emoji-picker-react";
@@ -85,11 +85,17 @@ function NewPost({
             onChange={(e) => setContentText(e.target.value)}
           />
           {contentImage && (
-            <img
-              className="max-w-full max-h-72 self-center"
-              src={contentImage}
-              onError={(e) => (e.currentTarget.style.display = "none")}
-            />
+            <div className="w-max relative">
+              <img
+                className="max-w-full max-h-72 self-center"
+                src={contentImage}
+                onError={(e) => (e.currentTarget.style.display = "none")}
+              />
+              <GrClose
+                onClick={() => setContentImage("")}
+                className="text-2xl bg-white rounded-3xl md:text-3xl -top-3 -right-3 p-1 text-cyan-400 absolute cursor-pointer"
+              />
+            </div>
           )}
         </div>
         <div className="flex justify-between items-center">
