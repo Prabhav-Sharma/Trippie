@@ -15,7 +15,6 @@ function Login() {
   } = useAuthForm();
 
   const location = useLocation();
-  console.log(location?.state?.from?.pathname);
 
   const dispatch = useDispatch();
 
