@@ -48,7 +48,7 @@ function CommentCard({ comment }) {
           <p>{text}</p>
           {image && (
             <img
-              className="max-w-full max-h-72 self-center"
+              className="w-max max-h-90 mt-1 object-cover"
               src={image}
               onError={(e) => (e.currentTarget.style.display = "none")}
             />

@@ -85,9 +85,9 @@ function NewPost({
             onChange={(e) => setContentText(e.target.value)}
           />
           {contentImage && (
-            <div className="w-max relative">
+            <div className="w-56 relative">
               <img
-                className="max-w-full max-h-72 self-center"
+                className="w-max max-h-90 mt-1 object-cover"
                 src={contentImage}
                 onError={(e) => (e.currentTarget.style.display = "none")}
               />

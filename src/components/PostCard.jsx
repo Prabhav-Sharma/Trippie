@@ -81,13 +81,11 @@ function PostCard({ post, location = "HOME" }) {
         <div className="text-xs flex flex-col sm:text-sm md:text-base whitespace-pre-wrap">
           <p>{text}</p>
           {image && (
-            <div className="max-w-xl">
-              <img
-                className="w-full max-h-80 lg:max-h-full my-1.5 object-cover"
-                src={image}
-                onError={(e) => (e.currentTarget.style.display = "none")}
-              />
-            </div>
+            <img
+              className="w-max max-h-90 mt-1 object-cover"
+              src={image}
+              onError={(e) => (e.currentTarget.style.display = "none")}
+            />
           )}
         </div>
         <div

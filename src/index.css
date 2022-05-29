@@ -64,3 +64,7 @@ body {
     max-width: 6rem;
     min-width: 6rem;
   }
+
+  .max-h-90{
+    max-height: 90vh;
+  }
