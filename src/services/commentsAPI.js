@@ -1,5 +1,5 @@
 import axios from "axios";
-import { updateComments } from "../redux";
+import { updateComments, updatePosts } from "../redux";
 import { toast } from "react-toastify";
 
 const getPostComments = async (postId, dispatcher) => {
@@ -31,6 +31,7 @@ const addCommentToPost = async (postId, commentData, token, dispatcher) => {
       data: { commentData },
     });
     dispatcher(updateComments(response.data.comments));
+    dispatcher(updatePosts(response.data.posts));
     return "SUCCESS";
   } catch (error) {
     toast.error("Couldn't add comment :/");
@@ -69,6 +70,7 @@ const deleteComment = async (postId, commentId, token, dispatcher) => {
       headers: { authorization: token },
     });
     dispatcher(updateComments(response.data.comments));
+    dispatcher(updatePosts(response.data.posts));
   } catch (error) {
     toast.error("This comment should've been deleted by now :/");
   }

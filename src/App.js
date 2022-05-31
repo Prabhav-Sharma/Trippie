@@ -2,7 +2,7 @@ import "./App.css";
 import { useEffect } from "react";
 import Router from "./router/Router";
 import { TopBar } from "./components";
-import { fetchAuthUserDetails } from "./services";
+import { fetchAuthUserDetails, fetchPosts } from "./services";
 import { useSelector, useDispatch } from "react-redux";
 import { ToastContainer } from "react-toastify";
 
@@ -12,6 +12,10 @@ function App() {
 
   useEffect(() => {
     fetchAuthUserDetails(token, dispatch);
+  }, []);
+
+  useEffect(() => {
+    fetchPosts(dispatch);
   }, []);
 
   return (

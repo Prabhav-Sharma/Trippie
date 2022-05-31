@@ -11,7 +11,7 @@ import {
   UserProfile,
   Profile,
   Explore,
-  Alerts,
+  Search,
 } from "../pages";
 import ProtectedRoute from "./ProtectedRoute";
 import GuestRoutes from "./GuestRoutes";
@@ -88,10 +88,10 @@ function Router() {
         />
 
         <Route
-          path="alerts"
+          path="search"
           element={
             <Layout>
-              <Alerts />
+              <Search />
             </Layout>
           }
         />

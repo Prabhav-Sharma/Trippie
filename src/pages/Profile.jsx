@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { useParams, Link, useNavigate } from "react-router-dom";
+import { useParams, Link, useNavigate, useLocation } from "react-router-dom";
 import { Feed, ProfileCard } from "../components";
 import { useDocumentTitle } from "../hooks";
 import { fetchAllUserPosts, fetchUserById } from "../services";
@@ -12,6 +12,7 @@ function Profile() {
   const [posts, setPosts] = useState([]);
   const [user, setUser] = useState({});
   const navigate = useNavigate();
+  const location = useLocation();
 
   useDocumentTitle(`${user.username ? "@" + user.username : "loading.."}`, [
     user,
@@ -34,13 +35,13 @@ function Profile() {
       )}
       <Feed posts={posts} />
       <Link
-        to="/home"
+        to={location?.state?.from?.pathname || "/home"}
         className="absolute top-1 left-1 flex items-center gap-1 text-white"
       >
         <span className="text-3xl lg:text-5xl w-max -translate-y-1.5 h-min ml-2">
           ‹
         </span>
-        Home
+        Back
       </Link>
     </div>
   );

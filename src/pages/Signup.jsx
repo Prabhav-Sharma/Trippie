@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { TextInput } from "../components";
 import { useDocumentTitle, useAuthForm, useToggle } from "../hooks";
 import { signup } from "../services";
@@ -21,8 +21,8 @@ function Signup() {
   } = useAuthForm();
 
   const dispatch = useDispatch();
-
   const navigate = useNavigate();
+  const location = useLocation();
 
   const { toggle: isLoading, setToggle: setIsLoading } = useToggle(false);
 
@@ -46,8 +46,8 @@ function Signup() {
       dispatch
     );
     setIsLoading(false);
-    status === "SUCCESS" && navigate("/home");
-    //Commented for future, when home page is added
+    status === "SUCCESS" &&
+      navigate(location?.state?.from?.pathname || "/home");
   };
   return (
     <main className="flex flex-col-reverse gap-1 bg-gray-800 sm:flex-row max-w-full md:pt-6 sm:gap-6 md:gap-8 h-full">

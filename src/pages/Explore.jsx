@@ -10,7 +10,7 @@ function Explore() {
 
   return (
     <>
-      <h1 className="text-white text-center text-base md:text-xl translate-y-2 flex self-center items-center gap-2">
+      <h1 className="text-blue-500 font-medium text-center text-xl md:text-2xl translate-y-2 flex self-center items-center gap-2">
         Explore
         <GiShipWheel />
       </h1>

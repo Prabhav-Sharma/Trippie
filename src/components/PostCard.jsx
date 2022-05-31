@@ -8,6 +8,7 @@ import {
 } from "../Utils/icons";
 import { LikeButton, BookmarkButton } from ".";
 import { unitFormatter } from "../Utils/helpers";
+import { FALLBACK_IMG } from "../Utils/constants";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useToggle } from "../hooks";
@@ -28,32 +29,46 @@ function PostCard({ post, location = "HOME" }) {
     username,
     createdAt,
     likes: { likeCount, likedBy },
-    content,
+    text,
     _id,
     profileImg,
     comments,
     userId,
+    image = "",
   } = post;
 
   const navigateToUserProfile = (e) => {
     e.stopPropagation();
-    navigate(`/profiles/${userId}`);
+    navigate(`/profiles/${userId}`, { state: { from: browserLocation } });
   };
+
+  const copyToClipBoard = () => {
+    navigator.clipboard.writeText(`https://trippies.netlify.app/post/${_id}`);
+    toast.success("Link copied to clipboard!");
+  };
+
   return (
     <div
       className="flex flex-row relative bg-transparent border-y border-slate-500 gap-3 p-3 text-white"
-      onClick={() => navigate(`/post/${_id}`)}
+      onClick={() =>
+        navigate(`/post/${_id}`, { state: { from: browserLocation } })
+      }
     >
       <div
         className="profile-icon cursor-pointer"
         onClick={navigateToUserProfile}
       >
-        <img className="rounded-full " src={profileImg} alt={username} />
+        <img
+          className="rounded-full "
+          src={profileImg}
+          alt={username}
+          onError={(e) => (e.currentTarget.src = FALLBACK_IMG)}
+        />
       </div>
       <div className="flex flex-col grow gap-4">
         <span className="flex flex-row gap-3 items-baseline">
           <h4
-            className="font-openSans font-normal text-sm cursor-pointer"
+            className="font-openSans text-sm cursor-pointer font-semibold"
             onClick={navigateToUserProfile}
           >
             @{username}
@@ -63,9 +78,16 @@ function PostCard({ post, location = "HOME" }) {
             {dayjs(new Date(createdAt)).format("ddd, DD MMM 'YY")}
           </h5>
         </span>
-        <p className="text-xs sm:text-sm md:text-base whitespace-pre-wrap">
-          {content}
-        </p>
+        <div className="text-xs flex flex-col sm:text-sm md:text-base whitespace-pre-wrap">
+          <p>{text}</p>
+          {image && (
+            <img
+              className="w-max max-h-90 mt-1 object-cover"
+              src={image}
+              onError={(e) => (e.currentTarget.style.display = "none")}
+            />
+          )}
+        </div>
         <div
           className="w-full text-xs sm:text-base flex flex-row justify-between px-2 self-center "
           onClick={(e) => e.stopPropagation()}
@@ -83,7 +105,7 @@ function PostCard({ post, location = "HOME" }) {
           </span>
           <FiShare
             className="text-xl hover:text-sky-500 hover:md:scale-110 cursor-pointer"
-            onClick={() => toast.info("Feature yet to be implemented!")}
+            onClick={copyToClipBoard}
           />
           <BookmarkButton postId={_id} />
         </div>

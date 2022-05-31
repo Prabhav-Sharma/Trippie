@@ -33,7 +33,8 @@ function ProfileEditModal({ showState }) {
   const encodeImageFileAsURL = (event) => {
     const reader = new FileReader();
     reader.onload = () => {
-      let dataUrl = reader.result;
+      const dataUrl = reader.result;
+      console.log(dataUrl);
       editDispatch({ type: PROFILE_IMG_ACTION, payload: dataUrl });
     };
     reader.readAsDataURL(event.target.files[0]);

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { updatePosts, updateCurrentPost } from "../redux";
+import { updatePosts, updateCurrentPost, updateBookmarks } from "../redux";
 import { toast } from "react-toastify";
 
 const fetchPosts = async (dispatcher) => {
@@ -58,6 +58,7 @@ const deletePost = async (postId, token, dispatcher) => {
       headers: { authorization: token },
     });
     dispatcher(updatePosts(response.data.posts));
+    dispatcher(updateBookmarks(response.data.bookmarks));
   } catch (error) {
     toast.error("Couldn't delete, try again!");
   }

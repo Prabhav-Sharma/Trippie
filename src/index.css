@@ -21,6 +21,15 @@ body {
     min-height: calc(100vh - 70px);
   }
 
+  section{
+    max-height: calc(100vh - 88px);
+    
+  }
+
+  section::-webkit-scrollbar {
+    display: none;
+  }
+
   .profile-icon{
     min-width: 2.25rem;
     max-width: 2.25rem;
@@ -54,4 +63,8 @@ body {
   .profile-large{
     max-width: 6rem;
     min-width: 6rem;
+  }
+
+  .max-h-90{
+    max-height: 90vh;
   }

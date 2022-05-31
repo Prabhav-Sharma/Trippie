@@ -12,6 +12,10 @@ const PROFILE_IMG_ACTION = "PROFILE_IMG";
 const ABOUT_ACTION = "ABOUT";
 const PORTFOLIO_ACTION = "PORTFOLIO";
 
+//Fallback image
+const FALLBACK_IMG =
+  "https://res.cloudinary.com/carsmart/image/upload/v1653567329/Trippie/fallback_uhzw7n.jpg";
+
 export {
   EMAIL_REGEX,
   EMAIL_ACTION,
@@ -22,4 +26,5 @@ export {
   PROFILE_IMG_ACTION,
   ABOUT_ACTION,
   PORTFOLIO_ACTION,
+  FALLBACK_IMG,
 };

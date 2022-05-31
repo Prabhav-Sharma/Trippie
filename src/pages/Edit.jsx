@@ -12,7 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useDocumentTitle } from "../hooks";
 
 function Edit() {
-  const [content, setContent] = useState("");
+  const [content, setContent] = useState({ text: undefined, image: "" });
   const { postId, commentId } = useParams();
   const token = useSelector((state) => state.auth.token);
   const location = useLocation();
@@ -23,25 +23,19 @@ function Edit() {
   useEffect(() => {
     (async () => {
       if (commentId) {
-        let comment = await getCommentById(postId, commentId, setContent);
-        setContent(comment.content);
+        let comment = await getCommentById(postId, commentId);
+        setContent(comment);
       } else {
         let post = await fetchPostById(postId, () => {}, false);
-        setContent(post.content);
+        setContent(post);
       }
     })();
   }, [commentId, postId]);
 
-  const editHandler = async (text) => {
+  const editHandler = async (content) => {
     if (commentId) {
-      return await editComment(
-        postId,
-        commentId,
-        { content: text },
-        token,
-        dispatch
-      );
-    } else return await editPost(postId, { content: text }, token, dispatch);
+      return await editComment(postId, commentId, content, token, dispatch);
+    } else return await editPost(postId, content, token, dispatch);
   };
 
   return (
@@ -57,11 +51,12 @@ function Edit() {
           Editing {commentId ? "Comment" : "Post"}
         </h1>
       </span>
-      {content ? (
+      {content.text !== undefined ? (
         <NewContent
           text="Edit"
           placeholder="Edit here!"
-          initialContent={content}
+          initialContent={content.text}
+          initialImage={content.image}
           callback={editHandler}
           pathname={location?.state?.from?.pathname}
         />

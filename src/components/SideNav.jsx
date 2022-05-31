@@ -4,7 +4,7 @@ import {
   GiPlagueDoctorProfile,
   BsFillBookmarkCheckFill,
   AiFillHome,
-  BsBellFill,
+  AiOutlineSearch,
 } from "../Utils/icons";
 
 function SideNav() {
@@ -13,7 +13,7 @@ function SideNav() {
 
   const activeStyles = "text-blue-500 bg-white";
   return (
-    <aside className="fixed bottom-0 border-t-2 p-4 w-full z-10 bg-gray-800 border-blue-500 sm:border-slate-400 sm:border-l-0 sm:border sm:gap-10 flex flex-row font-robotoFlex sm:rounded-md lg:mt-2 justify-around sm:flex-col sm:static sm:bottom-none sm:w-max sm:justify-start lg:items-start lg:w-64 lg:h-max lg:ml-1 lg:border-none ">
+    <aside className="fixed bottom-0 border-t-2 p-4 w-full z-10 bg-gray-800 border-blue-500 sm:border-slate-400 sm:border-l-0 sm:border sm:gap-10 flex flex-row font-robotoFlex sm:rounded-md lg:mt-2 justify-around sm:flex-col sm:static sm:bottom-none sm:w-max sm:justify-start lg:items-start lg:ml-6 lg:w-96 lg:h-max lg:border-none ">
       <NavLink
         to="/home"
         className={({ isActive }) =>
@@ -21,7 +21,7 @@ function SideNav() {
         }
       >
         <AiFillHome />
-        <span className="hidden text-base lg:inline">Home</span>
+        <span className="hidden text-lg lg:inline font-normal">Home</span>
       </NavLink>
       <NavLink
         to="/bookmarks"
@@ -30,7 +30,10 @@ function SideNav() {
         }
       >
         <BsFillBookmarkCheckFill className="text-lg" />
-        <span className="hidden text-base lg:inline"> Bookmarks</span>
+        <span className="hidden text-lg lg:inline font-normal ">
+          {" "}
+          Bookmarks
+        </span>
       </NavLink>
       <NavLink
         to="/explore"
@@ -39,16 +42,16 @@ function SideNav() {
         }
       >
         <GiShipWheel />
-        <span className="hidden text-base lg:inline">Explore</span>
+        <span className="hidden text-lg lg:inline font-normal">Explore</span>
       </NavLink>
       <NavLink
-        to="/alerts"
+        to="/search"
         className={({ isActive }) =>
           `  ${isActive && activeStyles} ${tabStyles}`
         }
       >
-        <BsBellFill />
-        <span className="hidden text-base lg:inline"> Alerts</span>
+        <AiOutlineSearch />
+        <span className="hidden text-lg lg:inline font-normal"> Search</span>
       </NavLink>
       <NavLink
         to="/profile"
@@ -57,7 +60,7 @@ function SideNav() {
         }
       >
         <GiPlagueDoctorProfile />
-        <span className="hidden text-base lg:inline">Profile</span>
+        <span className="hidden text-lg lg:inline font-normal">Profile</span>
       </NavLink>
     </aside>
   );

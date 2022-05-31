@@ -1,8 +1,13 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { unitFormatter, urlSchemeRemover } from "../Utils/helpers";
+import {
+  unitFormatter,
+  urlSchemeRegexMatcher,
+  urlSchemeRemover,
+} from "../Utils/helpers";
 import { FollowButton, ProfileEditModal } from ".";
 import { FaEdit } from "../Utils/icons";
+import { FALLBACK_IMG } from "../Utils/constants";
 
 function ProfileCard({ user, postCount }) {
   const authUserId = useSelector((state) => state.user._id);
@@ -19,9 +24,14 @@ function ProfileCard({ user, postCount }) {
   } = user;
 
   return (
-    <div className="w-full flex flex-col text-sm relative sm:text-base justify-center items-center gap-2 py-2 text-white border-slate-400 border">
+    <div className="w-full flex flex-col text-sm relative  sm:text-base justify-center items-center gap-2 py-2 text-white border-b border-gray-600">
       <div className=" w-20 sm:w-24 p-1 rounded-full bg-gray-200">
-        <img className="rounded-full " src={profileImg} alt={username} />
+        <img
+          className="rounded-full "
+          src={profileImg}
+          alt={username}
+          onError={(e) => (e.currentTarget.src = FALLBACK_IMG)}
+        />
       </div>
       <span className="flex flex-row gap-1 items-center">
         <h1 className="text-base sm:text-xl font-medium">{fullName}</h1>
@@ -40,13 +50,19 @@ function ProfileCard({ user, postCount }) {
         )}
       </span>
       <p className="max-w-lg text-center p-1">{about}</p>
-      <a
-        href={portfolio}
-        target="_blank"
-        className=" text-blue-400 self-center justify-self-center font-medium decoration-slice underline text-ellipsis overflow-hidden max-w-64 whitespace-nowrap"
-      >
-        {urlSchemeRemover(portfolio)}
-      </a>
+      {portfolio && (
+        <a
+          href={
+            !urlSchemeRegexMatcher(portfolio)
+              ? "https://" + portfolio
+              : portfolio
+          }
+          target="_blank"
+          className=" text-blue-400 self-center justify-self-center font-medium decoration-slice underline text-ellipsis overflow-hidden max-w-64 whitespace-nowrap"
+        >
+          {urlSchemeRemover(portfolio)}
+        </a>
+      )}
       <ul className="flex flex-row w-full justify-evenly">
         <li className="flex flex-col items-center">
           <p className="font-medium">{unitFormatter(following.length)}</p>
