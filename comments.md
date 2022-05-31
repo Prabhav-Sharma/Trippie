@@ -8,6 +8,8 @@
 - Updated data to make the app look more realistic 
 - Minor UI Changes
 
+Pull Request #8, (link)[https://github.com/Prabhav-Sharma/Trippie/pull/8]
+
 ### Previous
 ![image](https://user-images.githubusercontent.com/88072012/171030091-71d02ef6-021c-40b6-8280-242ee46ae679.png)
 
