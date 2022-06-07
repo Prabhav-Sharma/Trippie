@@ -1,5 +1,5 @@
 import axios from "axios";
-import { updateUsers, updateFollowing, addUser } from "../redux";
+import { updateUsers, updateFollowing, addUser, updatePosts } from "../redux";
 import { toast } from "react-toastify";
 
 const fetchUsers = async (dispatcher) => {
@@ -29,9 +29,10 @@ const editUserDetails = async (userData, token, dispatcher) => {
       data: { userData },
     });
     dispatcher(addUser(response.data.user));
+    dispatcher(updatePosts(response.data.posts));
     return "SUCCESS";
   } catch (e) {
-    toast.error("I'm sorry, couldn't save changes:'(");
+    toast.error("Sorry, couldn't save changes");
     return "FAILED";
   }
 };

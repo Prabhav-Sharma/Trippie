@@ -33,6 +33,17 @@ body {
   .profile-icon{
     min-width: 2.25rem;
     max-width: 2.25rem;
+    height: fit-content;
+    max-height: 2.25rem;
+    border-radius: 50%;
+  }
+
+  .profile-icon-medium{
+    min-width: 3rem;
+    max-width: 3rem;
+    height: fit-content;
+    max-height: 3rem;
+    border-radius: 50%;
   }
 
   .min-h-16{
@@ -62,6 +73,9 @@ body {
 
   .profile-large{
     max-width: 6rem;
+    height: fit-content;
+    max-height: 6rem;
+    border-radius: 50%;
     min-width: 6rem;
   }
 
