@@ -21,7 +21,7 @@ function SearchUsers() {
     setLoading(false);
   }
 
-  const optimizedSearch = useCallback(debounce(handleChange));
+  const optimizedSearch = useCallback(debounce(handleChange), [allUsers]);
 
   return (
     <aside className="hidden bg-transparent border-slate-400 border h-max max-h-72 overflow-y-clip p-1 lg:mt-2 lg:flex flex-col items-center">
