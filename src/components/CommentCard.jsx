@@ -35,7 +35,11 @@ function CommentCard({ comment }) {
   return (
     <div className="flex flex-row bg-transparent border text-white gap-4 p-3 border-slate-500 ">
       <div className="profile-icon">
-        <img className="rounded-full " src={profileImg} alt={username} />
+        <img
+          className="profile-icon object-cover w-full "
+          src={profileImg}
+          alt={username}
+        />
       </div>
       <div className="flex flex-col grow gap-4">
         <span className="flex flex-row gap-3 items-baseline">
