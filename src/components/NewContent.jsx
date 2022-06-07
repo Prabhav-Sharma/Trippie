@@ -68,7 +68,7 @@ function NewPost({
         }}
       >
         <img
-          className="rounded-full"
+          className="object-cover profile-icon-medium w-full"
           src={profileImg}
           alt={username}
           onError={(e) => (e.currentTarget.src = FALLBACK_IMG)}

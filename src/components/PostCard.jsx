@@ -59,7 +59,7 @@ function PostCard({ post, location = "HOME" }) {
         onClick={navigateToUserProfile}
       >
         <img
-          className="rounded-full "
+          className="w-full profile-icon object-cover "
           src={profileImg}
           alt={username}
           onError={(e) => (e.currentTarget.src = FALLBACK_IMG)}

@@ -25,9 +25,9 @@ function ProfileCard({ user, postCount }) {
 
   return (
     <div className="w-full flex flex-col text-sm relative  sm:text-base justify-center items-center gap-2 py-2 text-white border-b border-gray-600">
-      <div className=" w-20 sm:w-24 p-1 rounded-full bg-gray-200">
+      <div className="p-1 rounded-full bg-gray-200">
         <img
-          className="rounded-full "
+          className="w-full profile-large object-cover"
           src={profileImg}
           alt={username}
           onError={(e) => (e.currentTarget.src = FALLBACK_IMG)}

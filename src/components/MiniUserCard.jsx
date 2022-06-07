@@ -20,7 +20,7 @@ function MiniUserCard({ user }) {
       <div className="flex flex-row gap-1.5">
         <div className="profile-icon">
           <img
-            className="rounded-full "
+            className="w-full profile-icon object-cover"
             src={profileImg}
             alt={username}
             onError={(e) => (e.currentTarget.src = FALLBACK_IMG)}
