@@ -13,7 +13,8 @@ function Search() {
   const [posts, setPosts] = useState([]);
   const [users, setUsers] = useState([]);
   const { toggle: loading, setToggle: setLoading } = useToggle(false);
-  let debouncedQueryPostsAndUsers = useCallback(debounce(handleChange), []);
+
+  const debouncedQueryPostsAndUsers = useCallback(debounce(handleChange), []);
 
   useDocumentTitle("Search");
 

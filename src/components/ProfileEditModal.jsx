@@ -34,7 +34,6 @@ function ProfileEditModal({ showState }) {
     const reader = new FileReader();
     reader.onload = () => {
       const dataUrl = reader.result;
-      console.log(dataUrl);
       editDispatch({ type: PROFILE_IMG_ACTION, payload: dataUrl });
     };
     reader.readAsDataURL(event.target.files[0]);
@@ -60,14 +59,14 @@ function ProfileEditModal({ showState }) {
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex flex-row gap-4 items-center">
-          <div className="flex flex-col items-center gap-1 profile-large">
-            <span className="profile-large p-1 rounded-full bg-gray-200">
+          <div className="flex flex-col items-center gap-1">
+            <div className="p-1 rounded-full bg-gray-200">
               <img
                 src={profileImg}
                 alt={fullName}
-                className="border border-slate-200 rounded-full object-cover"
+                className="w-full profile-large object-cover"
               />
-            </span>
+            </div>
             <label className="bg-blue-500 w-max p-1.5 cursor-pointer sm:hover:ease-linear hover:bg-blue-600 sm:duration-100 text-white flex flex-row gap-1 items-center text-sm rounded-md">
               <input
                 type="file"

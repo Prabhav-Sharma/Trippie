@@ -60,7 +60,7 @@ export const users = [
     about:
       "I'm currently a Junior Research Fellow and visiting faculty in finance at the school of management and liberal studies of The Northcap University. ",
     profileImg:
-      "https://media-exp1.licdn.com/dms/image/C4D03AQHScfQxLQO0Nw/profile-displayphoto-shrink_400_400/0/1652718474670?e=1658966400&v=beta&t=8U_eVHJaf8WEHil819h6-wvnvL2XoLDtTFNz5m1hdoM",
+      "https://res.cloudinary.com/carsmart/image/upload/v1654575847/Trippie/KeiraKnightleyByAndreaRaffin2011__cropped_mbx9kf.jpg",
   },
   {
     _id: "3e723f53-64de-4bc4-8011-5d7985dd0dd6",
@@ -100,7 +100,7 @@ export const users = [
     about:
       "if the stars were edible,\n and our hearts were never full/\ncould we live with just a taste?",
     profileImg:
-      "https://pbs.twimg.com/profile_images/1506667570900119552/oG9bEyO7_400x400.jpg",
+      "https://res.cloudinary.com/carsmart/image/upload/v1654575763/Trippie/UNwomen_AH_Photo_400px_bqb293.jpg",
   },
   {
     _id: "2e5d35ca-e3d3-4b4a-922a-a56d030a900e",

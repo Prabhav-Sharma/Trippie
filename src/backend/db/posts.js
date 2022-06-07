@@ -21,7 +21,7 @@ export const posts = [
     updatedAt: formatDate(),
     userId: "1775f4c1-635b-4f9d-bebb-77748441633f",
     profileImg:
-      "https://pbs.twimg.com/profile_images/1506667570900119552/oG9bEyO7_400x400.jpg",
+      "https://res.cloudinary.com/carsmart/image/upload/v1654575763/Trippie/UNwomen_AH_Photo_400px_bqb293.jpg",
     image: "https://pbs.twimg.com/media/FTMC48zWYAAVxOB?format=jpg&name=small",
   },
   {
